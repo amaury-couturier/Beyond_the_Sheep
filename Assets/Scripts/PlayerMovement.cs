@@ -4,82 +4,76 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float inputHorizontal;
+    [Header("Player Movement")]
     [SerializeField] private float playerSpeed;
+    [SerializeField] private float checkRadius = 0.2f;
+    [SerializeField] private float acceleration = 10f;
+    [SerializeField] private float deceleration = 10f;
+    private float inputHorizontal;
+
+    [Header("Player Jump")]
     [SerializeField] private float jumpForce;
+    [SerializeField] private float originalGravity;
+    [SerializeField] private float fallingGravity;
     [SerializeField] private float coyoteTime;
     private float coyoteTimeCounter;
     [SerializeField] private float jumpBufferTime;
     private float jumpBufferCounter;
+    private bool isJumping;
+
+    [Header("Wall Jumping")]
     [SerializeField] private float wallSlidingSpeed;
     private float wallJumpingDirection;
     [SerializeField] private float wallJumpingTime;
     private float wallJumpingCounter;
     [SerializeField] private float wallJumpingDuration;
     [SerializeField] private Vector2 wallJumpingPower = new Vector2();
-
-    [SerializeField] private Rigidbody2D rb;
-
-    private bool isFacingRight = true;
     private bool isWallSliding;
     private bool isWallJumping;
-    private bool isJumping;
 
+    [Header("Player Dash")]
+    [SerializeField] private float dashingPower = 24f;
+    [SerializeField] private float dashingTime = 0.2f;
+    [SerializeField] private float dashingCooldown = 1f;
+    private bool isDashing;
+    private bool canDash = true;
+    
+    [Header("Componenets")]
+    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
-    [SerializeField] private float checkRadius = 0.2f;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask whatIsWall;
+    [SerializeField] private TrailRenderer tr;
+    private bool isFacingRight = true;
 
     void Update()
     {
+        //Simply return in case isDashing is true so the player is not allowed to move or jump while dahsing
+        if(isDashing)
+        {
+            return;
+        }
+
         //User input for horizontal movement
         inputHorizontal = Input.GetAxisRaw("Horizontal");
 
-        //Coyote time 
-        if(IsGrounded())
-        {
-            coyoteTimeCounter = coyoteTime;
-        }
-        else
-        {
-            coyoteTimeCounter -= Time.deltaTime;
-        }
-        
-        //Jump Buffer
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            jumpBufferCounter = jumpBufferTime;
-        }
-        else 
-        {
-            jumpBufferCounter -= Time.deltaTime;
-        }
+        UpdateCoyoteTime();
 
-        //Jumping
-        //Apply full jumpFroce to the rigidbody on the y axis
-        if(jumpBufferCounter > 0f && coyoteTimeCounter > 0f && !isJumping)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            jumpBufferCounter = 0f;
+        UpdateJumpBuffer();
 
-            StartCoroutine(JumpCooldown());
-        }
+        FasterFallSpeed();
 
-        //If the player is in the air but the space bar is released, half the rigibody vleocity
-        //This allwos the player to have variable jump height
-        if(Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0f) 
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-            coyoteTimeCounter = 0f;
-        }
+        CheckDashInput();
+
+        HandleJumping();
+
+        HandleJumpHeight();
     
-        //Wall Sliding
         WallSlide();
-        //Wall Jumping
+        
         WallJump();
     
-        //Flip 
         if(!isWallJumping)
         {
             Flip();
@@ -88,11 +82,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Use playerSpeed to move player left or right
-        if(!isWallJumping)
+        //Simply return in case isDashing is true so the player is not allowed to move or jump while dahsing
+        if(isDashing)
         {
-            rb.velocity = new Vector2(inputHorizontal * playerSpeed, rb.velocity.y);
+            return;
         }
+
+        MovePlayer();
     }
 
     //Methods
@@ -108,7 +104,78 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.OverlapCircle(wallCheck.position, checkRadius, whatIsWall);
     }
 
-    //
+    //Use playerSpeed to move player left or right
+    private void MovePlayer()
+    {
+        if (!isWallJumping)
+        {
+            float targetVelocityX = inputHorizontal * playerSpeed;
+    
+            // Apply acceleration
+            rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, targetVelocityX, acceleration * Time.fixedDeltaTime), rb.velocity.y);
+
+            // Apply deceleration when there's no input
+            if (inputHorizontal == 0f)
+            {
+                rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, 0f, deceleration * Time.fixedDeltaTime), rb.velocity.y);
+            }
+        }
+    }
+
+    //If player is grounded, update coyoteTimeCounter to coyoteTime, else decrease coyoteTimeCounter
+    private void UpdateCoyoteTime()
+    {
+        coyoteTimeCounter = IsGrounded() ? coyoteTime : coyoteTimeCounter - Time.deltaTime;
+    }
+
+    //If the space button is pressed down, update the jumpBufferCounter to jumpBufferTime, esle decrease jumpBufferCounter
+    private void UpdateJumpBuffer()
+    {
+        jumpBufferCounter = Input.GetKeyDown(KeyCode.Space) ? jumpBufferTime : jumpBufferCounter - Time.deltaTime;
+    }
+
+    //Increase gravity when player is falling to make it feel more impactful
+    private void FasterFallSpeed()
+    {
+        if (rb.velocity.y < 0 && !IsGrounded())
+        {
+            rb.gravityScale = fallingGravity;
+        }
+        else
+        {
+            rb.gravityScale = originalGravity;
+        }
+    }
+
+    //If left shift is pressed and canDash is true, execute coroutine
+    private void CheckDashInput()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        {
+            StartCoroutine(Dash());
+        }
+    }
+
+    private void HandleJumping()
+    {
+        if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f && !isJumping)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            jumpBufferCounter = 0f;
+            StartCoroutine(JumpCooldown());
+        }
+    }
+
+    //Variable jump height so that if the space key is released while jumping, the y velocity of the RgidiBody is halved
+    private void HandleJumpHeight()
+    {
+        if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            coyoteTimeCounter = 0f;
+        }
+    }
+
     private void WallSlide()
     {
         if(IsWalled() && !IsGrounded() && inputHorizontal != 0f)
@@ -132,7 +199,7 @@ public class PlayerMovement : MonoBehaviour
 
             CancelInvoke(nameof(StopWallJumping));
         }
-        //Allows Player to still wall jump even if turned away from wall for a brief amoutn of time
+        //Allows Player to still wall jump even if turned away from wall for a brief amount of time
         else
         {
             wallJumpingCounter -= Time.deltaTime;
@@ -174,5 +241,21 @@ public class PlayerMovement : MonoBehaviour
         isJumping = true;
         yield return new WaitForSeconds(0.6f);
         isJumping = false;
+    }
+
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        tr.emitting = true;
+        yield return new WaitForSeconds(dashingTime);
+        tr.emitting = false;
+        rb.gravityScale = originalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
 }
