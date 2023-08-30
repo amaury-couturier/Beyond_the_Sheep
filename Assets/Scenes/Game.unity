@@ -398,8 +398,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1426668669}
     - target: {fileID: 8867565238652882267, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
+      propertyPath: sheep
+      value: 
+      objectReference: {fileID: 6038425836429251143, guid: 4563a2360174c0244bab8388122b8375, type: 3}
+    - target: {fileID: 8867565238652882267, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
+      propertyPath: coyoteTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8867565238652882267, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
       propertyPath: acceleration
-      value: 55
+      value: 13.5
       objectReference: {fileID: 0}
     - target: {fileID: 8867565238652882267, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
       propertyPath: deceleration
@@ -411,6 +419,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8867565238652882267, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
       propertyPath: fallingGravity
+      value: 5.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8867565238652882267, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
+      propertyPath: jumpBufferTime
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 8867565238652882267, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
+      propertyPath: playerMaxSpeed
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8867565238652882267, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}

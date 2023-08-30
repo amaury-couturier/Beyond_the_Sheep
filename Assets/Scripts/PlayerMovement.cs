@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Movement")]
-    [SerializeField] private float playerSpeed;
+    [SerializeField] private float playerMaxSpeed;
     [SerializeField] private float checkRadius = 0.2f;
-    [SerializeField] private float acceleration = 10f;
-    [SerializeField] private float deceleration = 10f;
+    [SerializeField] private float acceleration;
+    private float targetVelocityX;
+    private float currentVelocityX;
     private float inputHorizontal;
+    private bool hasFlipped = false;
 
     [Header("Player Jump")]
     [SerializeField] private float jumpForce;
@@ -109,16 +111,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isWallJumping)
         {
-            float targetVelocityX = inputHorizontal * playerSpeed;
-    
-            // Apply acceleration
-            rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, targetVelocityX, acceleration * Time.fixedDeltaTime), rb.velocity.y);
+            float targetVelocityX = inputHorizontal * playerMaxSpeed;
 
-            // Apply deceleration when there's no input
-            if (inputHorizontal == 0f)
-            {
-                rb.velocity = new Vector2(Mathf.MoveTowards(rb.velocity.x, 0f, deceleration * Time.fixedDeltaTime), rb.velocity.y);
-            }
+            // Apply acceleration/deceleration to movement
+            targetVelocityX = inputHorizontal * playerMaxSpeed;
+            float t = acceleration * Time.deltaTime;
+            currentVelocityX = Mathf.Lerp(currentVelocityX, targetVelocityX, t);
+            rb.velocity = new Vector2(currentVelocityX, rb.velocity.y);
         }
     }
 
@@ -203,9 +202,10 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             wallJumpingCounter -= Time.deltaTime;
+            hasFlipped = true;
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) && wallJumpingCounter > 0f)
+        if(Input.GetKeyDown(KeyCode.Space) && wallJumpingCounter > 0f && hasFlipped)
         {
             isWallJumping = true;
             rb.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
@@ -227,12 +227,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Flip()
     {
+        hasFlipped = false;
+
         if((isFacingRight && inputHorizontal < 0f) || (!isFacingRight && inputHorizontal > 0f))
         {
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+            hasFlipped = true;
         }
     }
 
