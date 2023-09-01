@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Sheep1
+  - Sheep2
+  - Sheep3
   layers:
   - Default
   - TransparentFX
@@ -13,8 +16,8 @@ TagManager:
   - UI
   - Ground
   - Wall
-  - 
-  - 
+  - Sheep
+  - Player
   - 
   - 
   - 

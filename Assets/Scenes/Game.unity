@@ -241,6 +241,20 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &1426668670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426668663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b1387004ad7d2044b39f6147671f81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sheep: {fileID: 6038425836429251143, guid: 4563a2360174c0244bab8388122b8375, type: 3}
+  distanceBehindPlayer: 1.2
 --- !u!1 &1617129155
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,9 +395,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1010187993542844175, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1742102688566867916, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1742102688566867916, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2632010381562871568, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2632010381562871568, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
       propertyPath: m_Interpolate
@@ -392,6 +418,10 @@ PrefabInstance:
     - target: {fileID: 4208209743080810869, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
       propertyPath: m_Material
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6870247517280386420, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8867565238652882267, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
       propertyPath: tr
@@ -456,6 +486,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1742102688566867916, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1426668669}
+    - targetCorrespondingSourceObject: {fileID: 1742102688566867916, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1426668670}
   m_SourcePrefab: {fileID: 100100000, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
 --- !u!1001 &7173803014978477261
 PrefabInstance:
