@@ -14,11 +14,11 @@ public class SheepSpawning : MonoBehaviour
 
     private void InputHandler() 
     {
-        if(Input.GetKeyDown(KeyCode.Q) && transform.localScale.x > 0)
+        if(Input.GetKeyDown(KeyCode.Alpha1) && transform.localScale.x > 0)
         {
             Instantiate(sheep, new Vector3(transform.position.x - distanceBehindPlayer, transform.position.y, 0), Quaternion.identity);
         }
-        else if(Input.GetKeyDown(KeyCode.Q) && transform.localScale.x < 0)
+        else if(Input.GetKeyDown(KeyCode.Alpha1) && transform.localScale.x < 0)
         {
             Instantiate(sheep, new Vector3(transform.position.x + distanceBehindPlayer, transform.position.y, 0), Quaternion.identity);
         }

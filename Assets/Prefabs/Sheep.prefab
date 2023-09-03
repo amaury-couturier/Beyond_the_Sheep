@@ -196,7 +196,7 @@ MonoBehaviour:
   SheepMaxSpeed: 4
   checkRadius: 0.2
   acceleration: 20
-  jumpForce: 5.5
+  jumpForce: 10
   originalGravity: 4
   fallingGravity: 5.7
   coyoteTime: 0.1

@@ -132,17 +132,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f736874fd555f041b72892500442734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 7
+  playerMaxSpeed: 0
+  checkRadius: 0.2
+  acceleration: 0
   jumpForce: 14
+  originalGravity: 0
+  fallingGravity: 0
   coyoteTime: 0.05
   jumpBufferTime: 0.08
   wallSlidingSpeed: 2
   wallJumpingTime: 0.2
   wallJumpingDuration: 0.4
   wallJumpingPower: {x: 7, y: 14}
+  dashingPower: 24
+  dashingTime: 0.2
+  dashingCooldown: 1
   rb: {fileID: 2632010381562871568}
   groundCheck: {fileID: 3573471888857412153}
-  checkRadius: 0.2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
@@ -150,6 +156,7 @@ MonoBehaviour:
   whatIsWall:
     serializedVersion: 2
     m_Bits: 128
+  tr: {fileID: 0}
 --- !u!50 &2632010381562871568
 Rigidbody2D:
   serializedVersion: 4
