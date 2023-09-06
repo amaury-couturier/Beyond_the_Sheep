@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class SheepSpawning : MonoBehaviour
 {
-    [SerializeField] private GameObject sheep;
+    [SerializeField] private GameObject sheepPrefab;
     [SerializeField] private float distanceBehindPlayer;
+    private GameObject spawnedSheep; 
+    public bool sheep1Spawned = false;
 
     void Update()
     {
@@ -14,13 +16,27 @@ public class SheepSpawning : MonoBehaviour
 
     private void InputHandler() 
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1) && transform.localScale.x > 0)
+        if (!sheep1Spawned)
         {
-            Instantiate(sheep, new Vector3(transform.position.x - distanceBehindPlayer, transform.position.y, 0), Quaternion.identity);
+            if (Input.GetKeyDown(KeyCode.Alpha1) && transform.localScale.x > 0)
+            {
+                spawnedSheep = Instantiate(sheepPrefab, new Vector3(transform.position.x - distanceBehindPlayer, transform.position.y, 0), Quaternion.identity);
+                sheep1Spawned = true;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha1) && transform.localScale.x < 0)
+            {
+                spawnedSheep = Instantiate(sheepPrefab, new Vector3(transform.position.x + distanceBehindPlayer, transform.position.y, 0), Quaternion.identity);
+                sheep1Spawned = true;
+            }
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha1) && transform.localScale.x < 0)
+
+        else if (sheep1Spawned && spawnedSheep != null)
         {
-            Instantiate(sheep, new Vector3(transform.position.x + distanceBehindPlayer, transform.position.y, 0), Quaternion.identity);
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                Destroy(spawnedSheep); // Destroy the specific instance
+                sheep1Spawned = false;
+            }
         }
     }
 }

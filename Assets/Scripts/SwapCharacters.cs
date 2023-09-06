@@ -2,39 +2,69 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwapCharacters : MonoBehaviour
+public class SwapCharacter : SheepSpawning
 {
-    [SerializeField] private GameObject character1;
-    [SerializeField] private GameObject character2;
-    private GameObject activeCharacter;
+    [SerializeField] private Transform character;
+    [SerializeField] private List<Transform> possibleCharacters;
+    [SerializeField] private int whichCharacter;
+    [SerializeField] private CameraFollow cam;
 
     void Start()
     {
-        // Initialize the active character
-        activeCharacter = character1;
-        character2.SetActive(false);
+        if(character == null && possibleCharacters.Count >= 1)
+        {
+            character = possibleCharacters[0];
+        }
+
+        Swap();
     }
 
     void Update()
     {
-        // Swap characters with Q and E keys
-        if (Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.Q) && sheep1Spawned)
         {
-            SwitchCharacter(character1, character2);
+            if(whichCharacter == 0) 
+            {
+                whichCharacter = possibleCharacters.Count - 1;
+            }
+            else
+            {
+                whichCharacter -= 1;
+            }
+
+            Swap();
         }
-        else if (Input.GetKeyDown(KeyCode.E))
+        else if(Input.GetKeyDown(KeyCode.E) && sheep1Spawned)
         {
-            SwitchCharacter(character2, character1);
+            if(whichCharacter == possibleCharacters.Count - 1) 
+            {
+                whichCharacter = 0;
+            }
+            else
+            {
+                whichCharacter += 1;
+            }
+
+            Swap();
         }
     }
 
-    void SwitchCharacter(GameObject newCharacter, GameObject oldCharacter)
+    void Swap()
     {
-        newCharacter.SetActive(true);
-        oldCharacter.SetActive(false);
-        activeCharacter = newCharacter;
+        character = possibleCharacters[whichCharacter];
+        character.GetComponent<PlayerMovement>().enabled = true;
 
-        // Update the camera's target to the active character
-        Camera.main.GetComponent<CameraFollow>().target = activeCharacter.transform;
+        for(int i = 0; i < possibleCharacters.Count; i++)
+        {
+            if(possibleCharacters[i] != character)
+            {
+                possibleCharacters[i].GetComponent<PlayerMovement>().enabled = false;
+            }
+        }
+        
+        if (cam != null)
+        {
+            cam.target = character;
+        }
     }
 }
