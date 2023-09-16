@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private float coyoteTimeCounter;
     [SerializeField] private float jumpBufferTime;
     private float jumpBufferCounter;
+    [SerializeField] private float airResistance;
     private bool isJumping;
 
     [Header("Wall Jumping")]
@@ -44,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] private LayerMask whatIsSheep;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask whatIsWall;
     [SerializeField] private TrailRenderer tr;
@@ -97,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
     //Checks to see if the Ground Check transform is overlapping with any "Ground" Layers, if it is, return true
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+        return Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround | whatIsSheep);
     }
 
     //Checks to see if the Wall Check transform is overlapping with any "Wall" Layers, if it is, return true
@@ -117,6 +119,13 @@ public class PlayerMovement : MonoBehaviour
             targetVelocityX = inputHorizontal * playerMaxSpeed;
             float t = acceleration * Time.deltaTime;
             currentVelocityX = Mathf.Lerp(currentVelocityX, targetVelocityX, t);
+
+            // Apply air resistance or linear drag when jumping
+            if (!IsGrounded())
+            {
+                currentVelocityX *= 1f - airResistance * Time.deltaTime;
+            }
+
             rb.velocity = new Vector2(currentVelocityX, rb.velocity.y);
         }
     }

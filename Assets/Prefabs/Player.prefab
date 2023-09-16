@@ -62,7 +62,7 @@ Transform:
   m_GameObject: {fileID: 1742102688566867916}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.69, y: 0.02, z: 0}
+  m_LocalPosition: {x: -1.2, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -134,18 +134,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f736874fd555f041b72892500442734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMaxSpeed: 7
+  playerMaxSpeed: 8.1
   checkRadius: 0.2
-  acceleration: 13.5
+  acceleration: 7.2
   jumpForce: 14
   originalGravity: 4
-  fallingGravity: 5.7
-  coyoteTime: 0.1
+  fallingGravity: 5
+  coyoteTime: 0.08
   jumpBufferTime: 0.08
+  airResistance: 2.5
   wallSlidingSpeed: 2
   wallJumpingTime: 0.2
   wallJumpingDuration: 0.5
-  wallJumpingPower: {x: 9, y: 14}
+  wallJumpingPower: {x: 12, y: 14}
   dashingPower: 24
   dashingTime: 0.2
   dashingCooldown: 1
@@ -154,6 +155,9 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  whatIsSheep:
+    serializedVersion: 2
+    m_Bits: 256
   wallCheck: {fileID: 1096181099629158467}
   whatIsWall:
     serializedVersion: 2
@@ -348,6 +352,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sheepPrefab: {fileID: 5722696536108193573, guid: 22824c7629a2bfc4693b0c34311e2b29, type: 3}
   distanceBehindPlayer: 1.2
+  spawnedSheep:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  sheepSpawned: 000000
 --- !u!1 &6870247517280386420
 GameObject:
   m_ObjectHideFlags: 0

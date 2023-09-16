@@ -9,6 +9,11 @@ public class CameraFollow : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
 
     public Transform target;
+    
+    public void SetTarget(Transform newTarget)
+    {
+        target = newTarget;
+    }
 
     void Update()
     {
