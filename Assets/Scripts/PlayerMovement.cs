@@ -49,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask whatIsWall;
     [SerializeField] private TrailRenderer tr;
+    [SerializeField] private ParticleSystem dust;
     private bool isFacingRight = true;
 
     void Update()
@@ -170,6 +171,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             jumpBufferCounter = 0f;
+            CreateDust();
             StartCoroutine(JumpCooldown());
         }
     }
@@ -244,8 +246,14 @@ public class PlayerMovement : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+            CreateDust();
             hasFlipped = true;
         }
+    }
+
+    private void CreateDust()
+    {
+        dust.Play();
     }
 
     private IEnumerator JumpCooldown()

@@ -58,7 +58,6 @@ public class SheepSpawning : MonoBehaviour
             SwitchToFirstSheep();
         }
 
-        // Activate player controller and camera when the first or last spawned sheep is active
         if (activeSheepIndex == 0 && Input.GetKeyDown(KeyCode.E))
         {
             SwitchToPlayer();
@@ -84,8 +83,8 @@ public class SheepSpawning : MonoBehaviour
 
     private void SwitchToNextSheep()
     {
-        int nextSheepIndex = (activeSheepIndex + 1) % 3; // Cycle through sheep
-        while (!sheepSpawned[nextSheepIndex]) // Find the next active sheep
+        int nextSheepIndex = (activeSheepIndex + 1) % 3; 
+        while (!sheepSpawned[nextSheepIndex]) 
         {
             nextSheepIndex = (nextSheepIndex + 1) % 3;
         }
@@ -95,8 +94,8 @@ public class SheepSpawning : MonoBehaviour
 
     private void SwitchToPreviousSheep()
     {
-        int previousSheepIndex = (activeSheepIndex - 1 + 3) % 3; // Cycle through sheep
-        while (!sheepSpawned[previousSheepIndex]) // Find the previous active sheep
+        int previousSheepIndex = (activeSheepIndex - 1 + 3) % 3;
+        while (!sheepSpawned[previousSheepIndex])
         {
             previousSheepIndex = (previousSheepIndex - 1 + 3) % 3;
         }
@@ -123,7 +122,7 @@ public class SheepSpawning : MonoBehaviour
         if (activeSheepIndex != -1)
         {
             spawnedSheep[activeSheepIndex].GetComponent<SheepMovement>().enabled = false;
-            activeSheepIndex = -1; // Reset activeSheepIndex
+            activeSheepIndex = -1; 
         }
     }
 
