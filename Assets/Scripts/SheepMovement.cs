@@ -124,12 +124,18 @@ public class SheepMovement : MonoBehaviour
         }
     }
 
+    public void DisableMovement()
+    {
+        // Disable input and movement
+        inputHorizontal = 0f;
+        rb.velocity = Vector2.zero;
+        enabled = false; // Disable the entire SheepMovement script
+    }
+
     private IEnumerator JumpCooldown()
     {
         isJumping = true;
         yield return new WaitForSeconds(0.6f);
         isJumping = false;
     }
-
-
 }

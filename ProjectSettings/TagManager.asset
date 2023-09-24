@@ -4,9 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Sheep1
-  - Sheep2
-  - Sheep3
+  - Sheep
   layers:
   - Default
   - TransparentFX

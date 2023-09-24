@@ -5,32 +5,32 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Movement")]
-    [SerializeField] private float playerMaxSpeed;
+    [SerializeField] private float playerMaxSpeed = 8.1f;
     [SerializeField] private float checkRadius = 0.2f;
-    [SerializeField] private float acceleration;
+    [SerializeField] private float acceleration = 7.2f;
     private float targetVelocityX;
     private float currentVelocityX;
     private float inputHorizontal;
     private bool hasFlipped = false;
 
     [Header("Player Jump")]
-    [SerializeField] private float jumpForce;
-    [SerializeField] private float originalGravity;
-    [SerializeField] private float fallingGravity;
-    [SerializeField] private float coyoteTime;
+    [SerializeField] private float jumpForce = 12f;
+    [SerializeField] private float originalGravity = 4f;
+    [SerializeField] private float fallingGravity = 4.8f;
+    [SerializeField] private float coyoteTime = 0.08f;
     private float coyoteTimeCounter;
-    [SerializeField] private float jumpBufferTime;
+    [SerializeField] private float jumpBufferTime = 0.08f;
     private float jumpBufferCounter;
-    [SerializeField] private float airResistance;
+    [SerializeField] private float airResistance = 2.5f;
     private bool isJumping;
 
     [Header("Wall Jumping")]
-    [SerializeField] private float wallSlidingSpeed;
+    [SerializeField] private float wallSlidingSpeed = 2f;
     private float wallJumpingDirection;
-    [SerializeField] private float wallJumpingTime;
+    [SerializeField] private float wallJumpingTime = 0.2f;
     private float wallJumpingCounter;
-    [SerializeField] private float wallJumpingDuration;
-    [SerializeField] private Vector2 wallJumpingPower = new Vector2();
+    [SerializeField] private float wallJumpingDuration = 0.5f;
+    [SerializeField] private Vector2 wallJumpingPower = new Vector2(12f, 14f);
     private bool isWallSliding;
     private bool isWallJumping;
 
