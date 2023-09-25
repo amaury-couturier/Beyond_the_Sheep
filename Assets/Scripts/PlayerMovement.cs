@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private float currentVelocityX;
     private float inputHorizontal;
     private bool hasFlipped = false;
+    public bool isRunning = false;
 
     [Header("Player Jump")]
     [SerializeField] private float jumpForce = 12f;
@@ -22,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpBufferTime = 0.08f;
     private float jumpBufferCounter;
     [SerializeField] private float airResistance = 2.5f;
-    private bool isJumping;
+    public bool isJumping;
 
     [Header("Wall Jumping")]
     [SerializeField] private float wallSlidingSpeed = 2f;
@@ -31,19 +32,20 @@ public class PlayerMovement : MonoBehaviour
     private float wallJumpingCounter;
     [SerializeField] private float wallJumpingDuration = 0.5f;
     [SerializeField] private Vector2 wallJumpingPower = new Vector2(12f, 14f);
-    private bool isWallSliding;
-    private bool isWallJumping;
+    public bool isWallSliding;
+    public bool isWallJumping;
 
     [Header("Player Dash")]
     [SerializeField] private float dashingPower = 24f;
     [SerializeField] private float dashingTime = 0.2f;
     [SerializeField] private float dashingCooldown = 1f;
-    private bool isDashing;
+    public bool isDashing;
     private bool canDash = true;
 
     [Header("Player Ledge Grab")]
     [SerializeField] private float redXOffset, redYOffset, redXSize, redYSize, greenXOffset, greenYOffset, greenXSize, greenYSize;
-    private bool greenBox, redBox, isGrabbing;
+    private bool greenBox, redBox;
+    public bool isGrabbing;
     
     [Header("Componenets")]
     [SerializeField] private Rigidbody2D rb;
@@ -66,6 +68,15 @@ public class PlayerMovement : MonoBehaviour
 
         //User input for horizontal movement
         inputHorizontal = Input.GetAxisRaw("Horizontal");
+
+        if (Input.GetKeyDown(KeyCode.Space) || isJumping || isDashing || isWallJumping || isGrabbing)
+        {
+            isRunning = false;
+        }
+        else
+        {
+            isRunning =  Mathf.Abs(inputHorizontal) > 0.0f;;
+        }
 
         UpdateCoyoteTime();
 
@@ -104,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Methods
     //Checks to see if the Ground Check transform is overlapping with any "Ground" Layers, if it is, return true
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround | whatIsSheep);
     }
