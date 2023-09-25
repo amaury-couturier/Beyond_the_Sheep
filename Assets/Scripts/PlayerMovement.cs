@@ -40,6 +40,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashingCooldown = 1f;
     private bool isDashing;
     private bool canDash = true;
+
+    [Header("Player Ledge Grab")]
+    [SerializeField] private float redXOffset, redYOffset, redXSize, redYSize, greenXOffset, greenYOffset, greenXSize, greenYSize;
+    private bool greenBox, redBox, isGrabbing;
     
     [Header("Componenets")]
     [SerializeField] private Rigidbody2D rb;
@@ -78,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
         WallSlide();
         
         WallJump();
+
+        LedgeGrab();
     
         if(!isWallJumping)
         {
@@ -112,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
     //Use playerSpeed to move player left or right
     private void MovePlayer()
     {
-        if (!isWallJumping)
+        if (!isWallJumping && !isGrabbing)
         {
             float targetVelocityX = inputHorizontal * playerMaxSpeed;
 
@@ -254,6 +260,40 @@ public class PlayerMovement : MonoBehaviour
     private void CreateDust()
     {
         dust.Play();
+    }
+
+    private void LedgeGrab()
+    {
+        greenBox = Physics2D.OverlapBox(new Vector2(transform.position.x + (greenXOffset * transform.localScale.x), transform.position.y  + greenYOffset), new Vector2(greenXSize, greenYSize), 0f, whatIsWall);
+        redBox = Physics2D.OverlapBox(new Vector2(transform.position.x + (redXOffset * transform.localScale.x), transform.position.y  + redYOffset), new Vector2(redXSize, redYSize), 0f, whatIsWall);
+        
+        if (greenBox && !redBox && !isGrabbing && isJumping)
+        {
+            isGrabbing = true;
+            ChangePos();
+        }
+
+        if (isGrabbing)
+        {
+            rb.velocity = new Vector2(0f, 0f);
+            rb.gravityScale = 0f;
+        }
+    }
+
+    // Use for when animations are set up
+    public void ChangePos()
+    {
+        transform.position = new Vector2(transform.position.x + (0.5f * transform.localScale.x), transform.position.y + 0.7f);
+        rb.gravityScale = originalGravity;
+        isGrabbing = false;
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(new Vector2(transform.position.x + (redXOffset * transform.localScale.x), transform.position.y  + redYOffset), new Vector2(redXSize, redYSize));
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(new Vector2(transform.position.x + (greenXOffset * transform.localScale.x), transform.position.y  + greenYOffset), new Vector2(greenXSize, greenYSize));
     }
 
     private IEnumerator JumpCooldown()
