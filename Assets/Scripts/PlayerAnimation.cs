@@ -16,15 +16,12 @@ public class PlayerAnimation : MonoBehaviour
     public string playerWallSlide = "playerWallSlide";
     public string playerDash = "playerDash";
 
-
-    // Start is called before the first frame update
     void Start()
     {
         playerAnimator = GetComponentInChildren<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(playerLedgeGrab) && playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)

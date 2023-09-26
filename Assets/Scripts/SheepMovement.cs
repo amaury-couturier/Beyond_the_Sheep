@@ -11,16 +11,11 @@ public class SheepMovement : MonoBehaviour
     private float targetVelocityX;
     private float currentVelocityX;
     private float inputHorizontal;
+    public bool isRunning = false;
 
-    [Header("Sheep Jump")]
-    [SerializeField] private float jumpForce;
+    [Header("Sheep Fall")]
     [SerializeField] private float originalGravity;
     [SerializeField] private float fallingGravity;
-    [SerializeField] private float coyoteTime;
-    private float coyoteTimeCounter;
-    [SerializeField] private float jumpBufferTime;
-    private float jumpBufferCounter;
-    private bool isJumping;
     
     [Header("Componenets")]
     [SerializeField] private Rigidbody2D rb;
@@ -34,16 +29,17 @@ public class SheepMovement : MonoBehaviour
         //User input for horizontal movement
         inputHorizontal = Input.GetAxisRaw("Horizontal");
 
-        UpdateCoyoteTime();
-
-        UpdateJumpBuffer();
+        if (Mathf.Abs(inputHorizontal) == 0)
+        {
+            isRunning = false;
+        }
+        else
+        {
+            isRunning =  Mathf.Abs(inputHorizontal) > 0.0f;;
+        }
 
         FasterFallSpeed();
 
-        HandleJumping();
-
-        HandleJumpHeight();
-        
         Flip();
     
     }
@@ -55,7 +51,7 @@ public class SheepMovement : MonoBehaviour
 
     //Methods
     
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
     }
@@ -71,15 +67,6 @@ public class SheepMovement : MonoBehaviour
         rb.velocity = new Vector2(currentVelocityX, rb.velocity.y);
     }
 
-    private void UpdateCoyoteTime()
-    {
-        coyoteTimeCounter = IsGrounded() ? coyoteTime : coyoteTimeCounter - Time.deltaTime;
-    }
-
-    private void UpdateJumpBuffer()
-    {
-        jumpBufferCounter = Input.GetKeyDown(KeyCode.Space) ? jumpBufferTime : jumpBufferCounter - Time.deltaTime;
-    }
 
     private void FasterFallSpeed()
     {
@@ -90,25 +77,6 @@ public class SheepMovement : MonoBehaviour
         else
         {
             rb.gravityScale = originalGravity;
-        }
-    }
-
-    private void HandleJumping()
-    {
-        if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f && !isJumping)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            jumpBufferCounter = 0f;
-            StartCoroutine(JumpCooldown());
-        }
-    }
-
-    private void HandleJumpHeight()
-    {
-        if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0f)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-            coyoteTimeCounter = 0f;
         }
     }
 
@@ -130,12 +98,5 @@ public class SheepMovement : MonoBehaviour
         inputHorizontal = 0f;
         rb.velocity = Vector2.zero;
         enabled = false; // Disable the entire SheepMovement script
-    }
-
-    private IEnumerator JumpCooldown()
-    {
-        isJumping = true;
-        yield return new WaitForSeconds(0.6f);
-        isJumping = false;
     }
 }
