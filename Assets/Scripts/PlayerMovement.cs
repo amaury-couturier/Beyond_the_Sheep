@@ -121,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //Checks to see if the Wall Check transform is overlapping with any "Wall" Layers, if it is, return true
-    private bool IsWalled()
+    public bool IsWalled()
     {
         return Physics2D.OverlapCircle(wallCheck.position, checkRadius, whatIsWall);
     }
@@ -281,7 +281,6 @@ public class PlayerMovement : MonoBehaviour
         if (greenBox && !redBox && !isGrabbing && isJumping)
         {
             isGrabbing = true;
-            ChangePos();
         }
 
         if (isGrabbing)

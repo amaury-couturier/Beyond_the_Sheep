@@ -27,7 +27,12 @@ public class PlayerAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerMovement.isRunning && playerMovement.IsGrounded())
+        if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(playerLedgeGrab) && playerAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        {
+            playerMovement.ChangePos();
+        }
+
+        if (playerMovement.isRunning && playerMovement.IsGrounded() && !playerMovement.isDashing)
         {
             PlayAnimation(playerRun);
         }
@@ -35,7 +40,7 @@ public class PlayerAnimation : MonoBehaviour
         {
             PlayAnimation(playerIdle);
         }
-        else if (playerMovement.isJumping)
+        else if (playerMovement.isJumping && !playerMovement.IsWalled() && !playerMovement.isGrabbing)
         {
             PlayAnimation(playerJump);
         }
@@ -50,6 +55,10 @@ public class PlayerAnimation : MonoBehaviour
         else if (playerMovement.isWallSliding)
         {
             PlayAnimation(playerWallSlide);
+        }
+        else if (playerMovement.isGrabbing)
+        {
+            PlayAnimation(playerLedgeGrab);
         }
     }
 

@@ -137,19 +137,33 @@ MonoBehaviour:
   playerMaxSpeed: 8.1
   checkRadius: 0.2
   acceleration: 7.2
+  isRunning: 0
   jumpForce: 14
   originalGravity: 4
   fallingGravity: 5
   coyoteTime: 0.08
   jumpBufferTime: 0.08
   airResistance: 2.5
+  isJumping: 0
   wallSlidingSpeed: 2
   wallJumpingTime: 0.2
   wallJumpingDuration: 0.5
   wallJumpingPower: {x: 12, y: 14}
+  isWallSliding: 0
+  isWallJumping: 0
   dashingPower: 24
   dashingTime: 0.2
   dashingCooldown: 1
+  isDashing: 0
+  redXOffset: 0
+  redYOffset: 0
+  redXSize: 0
+  redYSize: 0
+  greenXOffset: 0
+  greenYOffset: 0
+  greenXSize: 0
+  greenYSize: 0
+  isGrabbing: 0
   rb: {fileID: 2632010381562871568}
   groundCheck: {fileID: 3573471888857412153}
   whatIsGround:
@@ -163,6 +177,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   tr: {fileID: 5662638796973848819}
+  dust: {fileID: 0}
 --- !u!50 &2632010381562871568
 Rigidbody2D:
   serializedVersion: 4
@@ -350,13 +365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1387004ad7d2044b39f6147671f81e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sheepPrefab: {fileID: 5722696536108193573, guid: 22824c7629a2bfc4693b0c34311e2b29, type: 3}
+  sheepPrefab: {fileID: 5722696536108193573, guid: 18db7fd3b04d60248b50c684a4e8b806, type: 3}
   distanceBehindPlayer: 1.2
-  spawnedSheep:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  sheepSpawned: 000000
 --- !u!1 &6870247517280386420
 GameObject:
   m_ObjectHideFlags: 0
