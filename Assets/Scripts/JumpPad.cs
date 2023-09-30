@@ -6,12 +6,12 @@ public class JumpPad : MonoBehaviour
 {
     [SerializeField] private float bounce;
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collider)
     {
         // Be sure to change tag to sheep later on 
-        if(collision.gameObject.CompareTag("Player"))
+        if (collider.gameObject.CompareTag("Player") || collider.gameObject.CompareTag("Sheep"))
         {
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * bounce, ForceMode2D.Impulse);
+            collider.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * bounce, ForceMode2D.Impulse);
         }
     }
 }

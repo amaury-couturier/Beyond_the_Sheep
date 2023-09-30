@@ -21,6 +21,11 @@ public class SheepSpawning : MonoBehaviour
     void Update()
     {
         InputHandler();
+
+        if (activeSheepIndex != -1 && !sheepSpawned[activeSheepIndex])
+        {
+            SwitchToPlayer();
+        }
     }
 
     private void InputHandler()
