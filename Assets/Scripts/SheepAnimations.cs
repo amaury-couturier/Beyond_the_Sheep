@@ -23,7 +23,7 @@ public class SheepAnimation : MonoBehaviour
         {
             PlayAnimation(sheepWalk);
         }
-        else if (!sheepMovement.isRunning && sheepMovement.IsGrounded())
+        else if (!sheepMovement.isRunning && sheepMovement.IsGrounded() || sheepMovement.hasSnapped)
         {
             PlayAnimation(sheepIdle);
         }

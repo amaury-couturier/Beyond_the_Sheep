@@ -16,16 +16,23 @@ public class SheepMovement : MonoBehaviour
     [Header("Sheep Fall")]
     [SerializeField] private float originalGravity;
     [SerializeField] private float fallingGravity;
-    
+
+    [Header("Sheep Snapping")]
+    public bool hasSnapped = false; 
+    [SerializeField] private Transform snapCheck;
+    private bool canMove = true; 
+    [SerializeField] private float moveDisableTime = 1.5f; 
+    private float moveDisableTimer = 0f;
+
     [Header("Componenets")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] private LayerMask whatIsSheep;
     private bool isFacingRight = true;
 
     void Update()
     {
-
         //User input for horizontal movement
         inputHorizontal = Input.GetAxisRaw("Horizontal");
 
@@ -35,18 +42,42 @@ public class SheepMovement : MonoBehaviour
         }
         else
         {
-            isRunning =  Mathf.Abs(inputHorizontal) > 0.0f;;
+            isRunning = Mathf.Abs(inputHorizontal) > 0.0f;
         }
 
-        FasterFallSpeed();
+        if (IsGrounded())
+        {
+            hasSnapped = false;
+        }
 
-        Flip();
+        if (!canMove)
+        {
+            moveDisableTimer -= Time.deltaTime;
+
+            // If the timer has expired, re-enable movement
+            if (moveDisableTimer <= 0f)
+            {
+                canMove = true;
+                moveDisableTimer = 0f;
+            }
+        }
+
+        else {
+            CheckForSheepBelow();
+
+            FasterFallSpeed();
+
+            Flip();
+        }
     
     }
 
     private void FixedUpdate()
     {
-        MoveSheep();
+        if (canMove)
+        {
+            MoveSheep();
+        }
     }
 
     //Methods
@@ -56,17 +87,46 @@ public class SheepMovement : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
     }
 
+    private void CheckForSheepBelow()
+    {
+        Vector2 rayOrigin = groundCheck.position;
+        Vector2 rayDirection = Vector2.down;
+
+        float rayDistance = 0.1f; 
+
+        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, rayDistance);
+
+        if (hit.collider != null)
+        {
+            // Check if the hit object is not the same as the current sheep
+            if (hit.collider.transform != transform)
+            {
+                if (hit.collider.CompareTag("Sheep") && !hasSnapped)
+                {
+                    Transform hitSheepTransform = hit.collider.transform;
+                    Transform hitSnapCheck = hitSheepTransform.Find("Snap Check");
+
+                    if (hitSnapCheck != null)
+                    {
+                        hasSnapped = true;
+                        Vector2 newPosition = new Vector2(hitSnapCheck.position.x, transform.position.y);
+                        transform.position = newPosition;
+                        moveDisableTimer = moveDisableTime; 
+                        canMove = false; 
+                    }
+                }
+            }
+        }
+    }   
+
     private void MoveSheep()
     {
         float targetVelocityX = inputHorizontal * SheepMaxSpeed;
-
-        // Apply acceleration/deceleration to movement
         targetVelocityX = inputHorizontal * SheepMaxSpeed;
         float t = acceleration * Time.deltaTime;
         currentVelocityX = Mathf.Lerp(currentVelocityX, targetVelocityX, t);
         rb.velocity = new Vector2(currentVelocityX, rb.velocity.y);
     }
-
 
     private void FasterFallSpeed()
     {
@@ -82,8 +142,7 @@ public class SheepMovement : MonoBehaviour
 
     private void Flip()
     {
-
-        if((isFacingRight && inputHorizontal < 0f) || (!isFacingRight && inputHorizontal > 0f))
+        if ((isFacingRight && inputHorizontal < 0f) || (!isFacingRight && inputHorizontal > 0f))
         {
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
@@ -94,9 +153,8 @@ public class SheepMovement : MonoBehaviour
 
     public void DisableMovement()
     {
-        // Disable input and movement
         inputHorizontal = 0f;
         rb.velocity = Vector2.zero;
-        enabled = false; // Disable the entire SheepMovement script
+        enabled = false; 
     }
 }

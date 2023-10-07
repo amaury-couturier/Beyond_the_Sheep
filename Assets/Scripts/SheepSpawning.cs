@@ -10,7 +10,6 @@ public class SheepSpawning : MonoBehaviour
 
     private GameObject[] spawnedSheep = new GameObject[3];
     private bool[] sheepSpawned = new bool[3];
-    private int activeSheepIndex = -1;
 
     void Awake()
     {
@@ -21,11 +20,6 @@ public class SheepSpawning : MonoBehaviour
     void Update()
     {
         InputHandler();
-
-        if (activeSheepIndex != -1 && !sheepSpawned[activeSheepIndex])
-        {
-            SwitchToPlayer();
-        }
     }
 
     private void InputHandler()
@@ -46,100 +40,164 @@ public class SheepSpawning : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && activeSheepIndex != -1)
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
-            SwitchToPreviousSheep();
-        }
-        else if (Input.GetKeyDown(KeyCode.E) && activeSheepIndex != -1)
-        {
-            SwitchToNextSheep();
-        }
-        else if (Input.GetKeyDown(KeyCode.Q) && activeSheepIndex == -1 && CountActiveSheep() > 0)
-        {
-            SwitchToFirstSheep();
-        }
-        else if (Input.GetKeyDown(KeyCode.E) && activeSheepIndex == -1 && CountActiveSheep() > 0)
-        {
-            SwitchToFirstSheep();
-        }
-
-        if (activeSheepIndex == 0 && Input.GetKeyDown(KeyCode.E))
-        {
-            SwitchToPlayer();
-        }
-        else if (activeSheepIndex == 2 && Input.GetKeyDown(KeyCode.Q))
-        {
-            SwitchToPlayer();
-        }
-    }
-
-    private int CountActiveSheep()
-    {
-        int count = 0;
-        for (int i = 0; i < sheepSpawned.Length; i++)
-        {
-            if (sheepSpawned[i])
+            if (playerMovement.enabled)
             {
-                count++;
+                if (!sheepSpawned[0] && !sheepSpawned[1] && !sheepSpawned[2])
+                {
+                    return;
+                }
+
+                else if (sheepSpawned[0])
+                {
+                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[0].transform);
+                    playerMovement.enabled = false;
+                    spawnedSheep[0].GetComponent<SheepMovement>().enabled = true;     
+                }
+
+                else if (!sheepSpawned[0] && sheepSpawned[1])
+                {
+                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[1].transform);
+                    playerMovement.enabled = false;
+                    spawnedSheep[1].GetComponent<SheepMovement>().enabled = true;  
+                }
+
+                else if (!sheepSpawned[0] && !sheepSpawned[1] && sheepSpawned[2])
+                {
+                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[2].transform);
+                    playerMovement.enabled = false;
+                    spawnedSheep[2].GetComponent<SheepMovement>().enabled = true;
+                }
+            }
+
+            else if (spawnedSheep[0] && spawnedSheep[0].GetComponent<SheepMovement>().enabled)
+            {
+                if (sheepSpawned[1])
+                {
+                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[1].transform);
+                    spawnedSheep[0].GetComponent<SheepMovement>().enabled = false;
+                    spawnedSheep[1].GetComponent<SheepMovement>().enabled = true;    
+                }
+                
+                else if (sheepSpawned[2] && !sheepSpawned[1])
+                {
+                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[2].transform);
+                    spawnedSheep[0].GetComponent<SheepMovement>().enabled = false;
+                    spawnedSheep[2].GetComponent<SheepMovement>().enabled = true;     
+                }
+
+                else if (!sheepSpawned[2] && !sheepSpawned[1])
+                {
+                    Camera.main.GetComponent<CameraFollow>().SetTarget(playerMovement.transform);
+                    spawnedSheep[0].GetComponent<SheepMovement>().enabled = false;
+                    playerMovement.enabled = true;
+                }
+            }
+
+            else if (spawnedSheep[1] && spawnedSheep[1].GetComponent<SheepMovement>().enabled)
+            {
+                if (sheepSpawned[2])
+                {
+                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[2].transform);
+                    spawnedSheep[1].GetComponent<SheepMovement>().enabled = false;
+                    spawnedSheep[2].GetComponent<SheepMovement>().enabled = true;
+                }
+                
+                else if (!sheepSpawned[2])
+                {
+                    Camera.main.GetComponent<CameraFollow>().SetTarget(playerMovement.transform);
+                    spawnedSheep[1].GetComponent<SheepMovement>().enabled = false;
+                    playerMovement.enabled = true;
+                }
+            }
+
+            else if (spawnedSheep[2] && spawnedSheep[2].GetComponent<SheepMovement>().enabled)
+            {
+                Camera.main.GetComponent<CameraFollow>().SetTarget(playerMovement.transform);
+                spawnedSheep[2].GetComponent<SheepMovement>().enabled = false;
+                playerMovement.enabled = true;
             }
         }
-        return count;
-    }
 
-    private void SwitchToNextSheep()
-    {
-        int nextSheepIndex = (activeSheepIndex + 1) % 3; 
-        while (!sheepSpawned[nextSheepIndex]) 
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
-            nextSheepIndex = (nextSheepIndex + 1) % 3;
-        }
-
-        SwitchToSheep(nextSheepIndex);
-    }
-
-    private void SwitchToPreviousSheep()
-    {
-        int previousSheepIndex = (activeSheepIndex - 1 + 3) % 3;
-        while (!sheepSpawned[previousSheepIndex])
-        {
-            previousSheepIndex = (previousSheepIndex - 1 + 3) % 3;
-        }
-
-        SwitchToSheep(previousSheepIndex);
-    }
-
-    private void SwitchToFirstSheep()
-    {
-        for (int i = 0; i < sheepSpawned.Length; i++)
-        {
-            if (sheepSpawned[i])
+            if (playerMovement.enabled)
             {
-                SwitchToSheep(i);
-                break;
+                if (!sheepSpawned[0] && !sheepSpawned[1] && !sheepSpawned[2])
+                {
+                    return;
+                }
+
+                else if (sheepSpawned[2])
+                {
+                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[2].transform);
+                    playerMovement.enabled = false;
+                    spawnedSheep[2].GetComponent<SheepMovement>().enabled = true;     
+                }
+
+                else if (!sheepSpawned[2] && sheepSpawned[1])
+                {
+                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[1].transform);
+                    playerMovement.enabled = false;
+                    spawnedSheep[1].GetComponent<SheepMovement>().enabled = true;  
+                }
+
+                else if (sheepSpawned[0] && !sheepSpawned[1] && !sheepSpawned[2])
+                {
+                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[0].transform);
+                    playerMovement.enabled = false;
+                    spawnedSheep[0].GetComponent<SheepMovement>().enabled = true;
+                }
+            }
+
+            else if (spawnedSheep[2] && spawnedSheep[2].GetComponent<SheepMovement>().enabled)
+            {
+                if (sheepSpawned[1])
+                {
+                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[1].transform);
+                    spawnedSheep[2].GetComponent<SheepMovement>().enabled = false;
+                    spawnedSheep[1].GetComponent<SheepMovement>().enabled = true;    
+                }
+                
+                else if (sheepSpawned[0] && !sheepSpawned[1])
+                {
+                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[0].transform);
+                    spawnedSheep[2].GetComponent<SheepMovement>().enabled = false;
+                    spawnedSheep[0].GetComponent<SheepMovement>().enabled = true;     
+                }
+
+                else if (!sheepSpawned[0] && !sheepSpawned[1])
+                {
+                    Camera.main.GetComponent<CameraFollow>().SetTarget(playerMovement.transform);
+                    spawnedSheep[2].GetComponent<SheepMovement>().enabled = false;
+                    playerMovement.enabled = true;
+                }
+            }
+
+            else if (spawnedSheep[1] && spawnedSheep[1].GetComponent<SheepMovement>().enabled)
+            {
+                if (sheepSpawned[0])
+                {
+                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[0].transform);
+                    spawnedSheep[1].GetComponent<SheepMovement>().enabled = false;
+                    spawnedSheep[0].GetComponent<SheepMovement>().enabled = true;
+                }
+                
+                else if (!sheepSpawned[0])
+                {
+                    Camera.main.GetComponent<CameraFollow>().SetTarget(playerMovement.transform);
+                    spawnedSheep[1].GetComponent<SheepMovement>().enabled = false;
+                    playerMovement.enabled = true;
+                }
+            }
+
+            else if (spawnedSheep[0] && spawnedSheep[0].GetComponent<SheepMovement>().enabled)
+            {
+                Camera.main.GetComponent<CameraFollow>().SetTarget(playerMovement.transform);
+                spawnedSheep[0].GetComponent<SheepMovement>().enabled = false;
+                playerMovement.enabled = true;
             }
         }
-    }
-
-    private void SwitchToPlayer()
-    {
-        Camera.main.GetComponent<CameraFollow>().SetTarget(playerMovement.transform);
-        playerMovement.enabled = true;
-        if (activeSheepIndex != -1)
-        {
-            spawnedSheep[activeSheepIndex].GetComponent<SheepMovement>().enabled = false;
-            activeSheepIndex = -1; 
-        }
-    }
-
-    private void SwitchToSheep(int index)
-    {
-        Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[index].transform);
-        playerMovement.enabled = false;
-        if (activeSheepIndex != -1)
-        {
-            spawnedSheep[activeSheepIndex].GetComponent<SheepMovement>().enabled = false;
-        }
-        spawnedSheep[index].GetComponent<SheepMovement>().enabled = true;
-        activeSheepIndex = index;
     }
 }
