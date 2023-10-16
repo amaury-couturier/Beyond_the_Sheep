@@ -51,23 +51,17 @@ public class SheepSpawning : MonoBehaviour
 
                 else if (sheepSpawned[0])
                 {
-                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[0].transform);
-                    playerMovement.enabled = false;
-                    spawnedSheep[0].GetComponent<SheepMovement>().enabled = true;     
+                    SwitchToFirstSheep(0);
                 }
 
                 else if (!sheepSpawned[0] && sheepSpawned[1])
                 {
-                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[1].transform);
-                    playerMovement.enabled = false;
-                    spawnedSheep[1].GetComponent<SheepMovement>().enabled = true;  
+                    SwitchToFirstSheep(1);  
                 }
 
                 else if (!sheepSpawned[0] && !sheepSpawned[1] && sheepSpawned[2])
                 {
-                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[2].transform);
-                    playerMovement.enabled = false;
-                    spawnedSheep[2].GetComponent<SheepMovement>().enabled = true;
+                    SwitchToFirstSheep(2);
                 }
             }
 
@@ -75,23 +69,17 @@ public class SheepSpawning : MonoBehaviour
             {
                 if (sheepSpawned[1])
                 {
-                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[1].transform);
-                    spawnedSheep[0].GetComponent<SheepMovement>().enabled = false;
-                    spawnedSheep[1].GetComponent<SheepMovement>().enabled = true;    
+                    SwitchToSheep(0, 1);
                 }
                 
                 else if (sheepSpawned[2] && !sheepSpawned[1])
                 {
-                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[2].transform);
-                    spawnedSheep[0].GetComponent<SheepMovement>().enabled = false;
-                    spawnedSheep[2].GetComponent<SheepMovement>().enabled = true;     
+                    SwitchToSheep(0, 2);    
                 }
 
                 else if (!sheepSpawned[2] && !sheepSpawned[1])
                 {
-                    Camera.main.GetComponent<CameraFollow>().SetTarget(playerMovement.transform);
-                    spawnedSheep[0].GetComponent<SheepMovement>().enabled = false;
-                    playerMovement.enabled = true;
+                    SwitchToPlayer(0);
                 }
             }
 
@@ -99,24 +87,18 @@ public class SheepSpawning : MonoBehaviour
             {
                 if (sheepSpawned[2])
                 {
-                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[2].transform);
-                    spawnedSheep[1].GetComponent<SheepMovement>().enabled = false;
-                    spawnedSheep[2].GetComponent<SheepMovement>().enabled = true;
+                    SwitchToSheep(1, 2);
                 }
                 
                 else if (!sheepSpawned[2])
                 {
-                    Camera.main.GetComponent<CameraFollow>().SetTarget(playerMovement.transform);
-                    spawnedSheep[1].GetComponent<SheepMovement>().enabled = false;
-                    playerMovement.enabled = true;
+                    SwitchToPlayer(1);
                 }
             }
 
             else if (spawnedSheep[2] && spawnedSheep[2].GetComponent<SheepMovement>().enabled)
             {
-                Camera.main.GetComponent<CameraFollow>().SetTarget(playerMovement.transform);
-                spawnedSheep[2].GetComponent<SheepMovement>().enabled = false;
-                playerMovement.enabled = true;
+                SwitchToPlayer(2);
             }
         }
 
@@ -131,23 +113,17 @@ public class SheepSpawning : MonoBehaviour
 
                 else if (sheepSpawned[2])
                 {
-                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[2].transform);
-                    playerMovement.enabled = false;
-                    spawnedSheep[2].GetComponent<SheepMovement>().enabled = true;     
+                    SwitchToFirstSheep(2);   
                 }
 
                 else if (!sheepSpawned[2] && sheepSpawned[1])
                 {
-                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[1].transform);
-                    playerMovement.enabled = false;
-                    spawnedSheep[1].GetComponent<SheepMovement>().enabled = true;  
+                    SwitchToFirstSheep(1);
                 }
 
                 else if (sheepSpawned[0] && !sheepSpawned[1] && !sheepSpawned[2])
                 {
-                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[0].transform);
-                    playerMovement.enabled = false;
-                    spawnedSheep[0].GetComponent<SheepMovement>().enabled = true;
+                    SwitchToFirstSheep(0);
                 }
             }
 
@@ -155,23 +131,17 @@ public class SheepSpawning : MonoBehaviour
             {
                 if (sheepSpawned[1])
                 {
-                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[1].transform);
-                    spawnedSheep[2].GetComponent<SheepMovement>().enabled = false;
-                    spawnedSheep[1].GetComponent<SheepMovement>().enabled = true;    
+                    SwitchToSheep(2, 1); 
                 }
                 
                 else if (sheepSpawned[0] && !sheepSpawned[1])
                 {
-                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[0].transform);
-                    spawnedSheep[2].GetComponent<SheepMovement>().enabled = false;
-                    spawnedSheep[0].GetComponent<SheepMovement>().enabled = true;     
+                    SwitchToSheep(2, 0);    
                 }
 
                 else if (!sheepSpawned[0] && !sheepSpawned[1])
                 {
-                    Camera.main.GetComponent<CameraFollow>().SetTarget(playerMovement.transform);
-                    spawnedSheep[2].GetComponent<SheepMovement>().enabled = false;
-                    playerMovement.enabled = true;
+                    SwitchToPlayer(2);
                 }
             }
 
@@ -179,25 +149,40 @@ public class SheepSpawning : MonoBehaviour
             {
                 if (sheepSpawned[0])
                 {
-                    Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[0].transform);
-                    spawnedSheep[1].GetComponent<SheepMovement>().enabled = false;
-                    spawnedSheep[0].GetComponent<SheepMovement>().enabled = true;
+                    SwitchToSheep(1, 0); 
                 }
                 
                 else if (!sheepSpawned[0])
                 {
-                    Camera.main.GetComponent<CameraFollow>().SetTarget(playerMovement.transform);
-                    spawnedSheep[1].GetComponent<SheepMovement>().enabled = false;
-                    playerMovement.enabled = true;
+                    SwitchToPlayer(1);
                 }
             }
 
             else if (spawnedSheep[0] && spawnedSheep[0].GetComponent<SheepMovement>().enabled)
             {
-                Camera.main.GetComponent<CameraFollow>().SetTarget(playerMovement.transform);
-                spawnedSheep[0].GetComponent<SheepMovement>().enabled = false;
-                playerMovement.enabled = true;
+                SwitchToPlayer(0);
             }
         }
+    }
+
+    private void SwitchToPlayer(int p)
+    {
+        Camera.main.GetComponent<CameraFollow>().SetTarget(playerMovement.transform);
+        spawnedSheep[p].GetComponent<SheepMovement>().enabled = false;
+        playerMovement.enabled = true;
+    }
+
+    private void SwitchToSheep(int c, int n)
+    {
+        Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[n].transform);
+        spawnedSheep[c].GetComponent<SheepMovement>().enabled = false;
+        spawnedSheep[n].GetComponent<SheepMovement>().enabled = true;
+    }
+
+    private void SwitchToFirstSheep(int f)
+    {
+        Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[f].transform);
+        playerMovement.enabled = false;
+        spawnedSheep[f].GetComponent<SheepMovement>().enabled = true; 
     }
 }

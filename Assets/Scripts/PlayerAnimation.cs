@@ -37,7 +37,7 @@ public class PlayerAnimation : MonoBehaviour
         {
             PlayAnimation(playerIdle);
         }
-        else if (playerMovement.isJumping && !playerMovement.IsWalled() && !playerMovement.isGrabbing)
+        else if (playerMovement.isJumping && !playerMovement.IsWalled() && !playerMovement.isGrabbing && !playerMovement.isDashing)
         {
             PlayAnimation(playerJump);
         }

@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Movement")]
-    [SerializeField] private float playerMaxSpeed = 8.1f;
+    [SerializeField] private float playerMaxSpeed = 5f;
     [SerializeField] private float checkRadius = 0.2f;
     [SerializeField] private float acceleration = 7.2f;
     private float targetVelocityX;
@@ -15,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isRunning = false;
 
     [Header("Player Jump")]
-    [SerializeField] private float jumpForce = 12f;
+    [SerializeField] private float jumpForce = 8f;
     [SerializeField] private float originalGravity = 4f;
     [SerializeField] private float fallingGravity = 4.8f;
     [SerializeField] private float coyoteTime = 0.08f;
@@ -56,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask whatIsWall;
     [SerializeField] private TrailRenderer tr;
     [SerializeField] private ParticleSystem dust;
-    private bool isFacingRight = true;
+    public bool isFacingRight = true;
 
     void Update()
     {
@@ -275,8 +276,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void LedgeGrab()
     {
-        greenBox = Physics2D.OverlapBox(new Vector2(transform.position.x + (greenXOffset * transform.localScale.x), transform.position.y  + greenYOffset), new Vector2(greenXSize, greenYSize), 0f, whatIsWall);
-        redBox = Physics2D.OverlapBox(new Vector2(transform.position.x + (redXOffset * transform.localScale.x), transform.position.y  + redYOffset), new Vector2(redXSize, redYSize), 0f, whatIsWall);
+        greenBox = Physics2D.OverlapBox(new Vector2(transform.position.x + (greenXOffset * transform.localScale.x), transform.position.y  + greenYOffset), new Vector2(greenXSize, greenYSize), 0f, (whatIsWall | whatIsGround));
+        redBox = Physics2D.OverlapBox(new Vector2(transform.position.x + (redXOffset * transform.localScale.x), transform.position.y  + redYOffset), new Vector2(redXSize, redYSize), 0f, (whatIsWall | whatIsGround));
         
         if (greenBox && !redBox && !isGrabbing && isJumping)
         {

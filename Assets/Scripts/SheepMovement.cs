@@ -21,7 +21,7 @@ public class SheepMovement : MonoBehaviour
     public bool hasSnapped = false; 
     [SerializeField] private Transform snapCheck;
     private bool canMove = true; 
-    [SerializeField] private float moveDisableTime = 1.5f; 
+    [SerializeField] private float moveDisableTime = 0.4f; 
     private float moveDisableTimer = 0f;
 
     [Header("Componenets")]
@@ -29,7 +29,7 @@ public class SheepMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private LayerMask whatIsSheep;
-    private bool isFacingRight = true;
+    public bool isFacingRight = true;
 
     void Update()
     {
