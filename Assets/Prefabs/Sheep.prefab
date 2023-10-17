@@ -98,6 +98,7 @@ MonoBehaviour:
   whatIsSheep:
     serializedVersion: 2
     m_Bits: 256
+  isFacingRight: 1
 --- !u!50 &4478493147097523517
 Rigidbody2D:
   serializedVersion: 4
@@ -114,7 +115,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3.5
-  m_Material: {fileID: 6200000, guid: 16b6af32a5d23cf40a04361b87b72428, type: 2}
+  m_Material: {fileID: 6200000, guid: d708a39408725c34cab09a1f0c939d06, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

@@ -111,7 +111,7 @@ public class SheepMovement : MonoBehaviour
                         hasSnapped = true;
                         Vector2 newPosition = new Vector2(hitSnapCheck.position.x, transform.position.y);
                         transform.position = newPosition;
-                        moveDisableTimer = moveDisableTime; 
+                        moveDisableTimer = moveDisableTime;
                         canMove = false; 
                     }
                 }
@@ -149,12 +149,5 @@ public class SheepMovement : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
-    }
-
-    public void DisableMovement()
-    {
-        inputHorizontal = 0f;
-        rb.velocity = Vector2.zero;
-        enabled = false; 
     }
 }
