@@ -29,7 +29,7 @@ public class PlayerAnimation : MonoBehaviour
             playerMovement.ChangePos();
         }
 
-        if (playerMovement.isRunning && playerMovement.IsGrounded() && !playerMovement.isDashing && playerMovement.enabled)
+        if (playerMovement.isRunning && playerMovement.IsGrounded() && !playerMovement.isDashing)
         {
             PlayAnimation(playerRun);
         }
