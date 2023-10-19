@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private float moveTime = 0.15f;
-    [SerializeField] private float changeDirectionSpeed = 0.5f;
+    //[SerializeField] private float changeDirectionSpeed = 0.5f;
     [SerializeField] private float minY = 0f;
     [SerializeField] private float minX = -2f;
     [SerializeField] private float aheadDistance = 2.0f; 
@@ -29,8 +29,9 @@ public class CameraFollow : MonoBehaviour
 
         // Calculate the camera's look-ahead position
         Vector3 lookAheadPosition = targetPosition + new Vector3(target.localScale.x * aheadDistance, 0, 0);
+        
 
         // Smoothly follow the look-ahead position
-        transform.position = Vector3.SmoothDamp(transform.position, lookAheadPosition, ref velocity, changeDirectionSpeed);
+        transform.position = Vector3.SmoothDamp(transform.position, lookAheadPosition, ref velocity, moveTime);
     }
 }
