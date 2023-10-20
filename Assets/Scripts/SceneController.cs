@@ -3,21 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelLoader : MonoBehaviour
+public class SceneController : MonoBehaviour
 {    
     public Animator transition;
-    public static LevelLoader instance;
+    public static SceneController instance;
     [SerializeField] private float transitionTime = 1.0f;
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    
     public void LoadNextLevel()
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        Debug.Log("called");
     }
 
     IEnumerator LoadLevel(int levelIndex)
     {
-        transition.SetTrigger("Start");
+        Debug.Log("coroutine");
+        transition.SetTrigger("End");
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(levelIndex);
+        transition.SetTrigger("Start");
     }
 }
