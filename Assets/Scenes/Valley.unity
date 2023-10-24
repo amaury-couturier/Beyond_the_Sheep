@@ -7106,7 +7106,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1742102688566867916, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
   m_PrefabInstance: {fileID: 1407327983}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &749326765
+--- !u!114 &749326772
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7115,9 +7115,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 749326758}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1f0565e0341e254084d2708329127aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 96eb5945d1ff6ab4b9369b9e6f3936ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 348830346}
   respawnThreshold: -6
 --- !u!1 &862817341
 GameObject:
@@ -7435,7 +7436,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1742102688566867916, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 749326765}
+      addedObject: {fileID: 749326772}
   m_SourcePrefab: {fileID: 100100000, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
 --- !u!1 &1419031668
 GameObject:
@@ -7454,7 +7455,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1419031669
 MonoBehaviour:
   m_ObjectHideFlags: 0

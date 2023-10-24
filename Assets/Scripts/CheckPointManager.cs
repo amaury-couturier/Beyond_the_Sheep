@@ -2,22 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class CheckPointManager : MonoBehaviour
 {
+    [SerializeField] private Transform player;
     [SerializeField] private float respawnThreshold = -6.0f;
+
     private Vector3 respawnPoint;
 
     void Start()
     {
-        respawnPoint = transform.position;
+        respawnPoint = player.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y <= respawnThreshold)
+        if (player.position.y <= respawnThreshold)
         {
-            transform.position = respawnPoint;
+            player.position = respawnPoint;
         }
     }
 
@@ -25,7 +27,8 @@ public class GameManager : MonoBehaviour
     {
         if (collision.tag == "Checkpoint")
         {
-            respawnPoint = transform.position;
+            Debug.Log("Checkpoint");
+            respawnPoint = player.position;
         }
     }
 }
