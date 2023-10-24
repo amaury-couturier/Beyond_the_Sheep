@@ -8,6 +8,8 @@ public class CameraFollow : MonoBehaviour
     //[SerializeField] private float changeDirectionSpeed = 0.5f;
     [SerializeField] private float minY = 0f;
     [SerializeField] private float minX = -2f;
+    [SerializeField] private float maxY = 100f;
+    [SerializeField] private float maxX = 500f;
     [SerializeField] private float aheadDistance = 2.0f; 
 
     private Vector3 velocity = Vector3.zero;
@@ -22,8 +24,9 @@ public class CameraFollow : MonoBehaviour
     {
         // Calculate the target position with clamping
         Vector3 targetPosition = new Vector3(
-            Mathf.Clamp(target.position.x, minX, Mathf.Infinity),
-            Mathf.Clamp(target.position.y, minY, Mathf.Infinity),
+            Mathf.Clamp(target.position.x, minX, maxX),
+            Mathf.Clamp(target.position.y, minY, maxY),
+
             transform.position.z
         );
 

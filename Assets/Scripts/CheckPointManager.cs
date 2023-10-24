@@ -27,7 +27,6 @@ public class CheckPointManager : MonoBehaviour
     {
         if (collision.tag == "Checkpoint")
         {
-            Debug.Log("Checkpoint");
             respawnPoint = player.position;
         }
     }

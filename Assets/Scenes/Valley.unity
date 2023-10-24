@@ -8151,6 +8151,8 @@ MonoBehaviour:
   moveTime: 0.25
   minY: 0
   minX: -2
+  maxY: 100
+  maxX: 500
   aheadDistance: 2
   target: {fileID: 348830346}
 --- !u!1660057539 &9223372036854775807
