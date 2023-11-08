@@ -62,7 +62,9 @@ public class SheepMovement : MonoBehaviour
             }
         }
 
-        else {
+        else 
+        {
+
             CheckForSheepBelow();
 
             FasterFallSpeed();
@@ -81,7 +83,6 @@ public class SheepMovement : MonoBehaviour
     }
 
     //Methods
-    
     public bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);

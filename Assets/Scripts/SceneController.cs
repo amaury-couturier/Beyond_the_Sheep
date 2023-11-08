@@ -9,6 +9,7 @@ public class SceneController : MonoBehaviour
     public static SceneController instance;
     [SerializeField] private float transitionTime = 1.0f;
 
+
     private void Awake()
     {
         if (instance == null)

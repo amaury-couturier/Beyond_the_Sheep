@@ -50,13 +50,13 @@ public class SheepSpawning : MonoBehaviour
                 }
 
                 else if (sheepSpawned[0])
-                {
+                { 
                     SwitchToFirstSheep(0);
                 }
 
                 else if (!sheepSpawned[0] && sheepSpawned[1])
-                {
-                    SwitchToFirstSheep(1);  
+                { 
+                    SwitchToFirstSheep(1);
                 }
 
                 else if (!sheepSpawned[0] && !sheepSpawned[1] && sheepSpawned[2])
@@ -74,7 +74,7 @@ public class SheepSpawning : MonoBehaviour
                 
                 else if (sheepSpawned[2] && !sheepSpawned[1])
                 {
-                    SwitchToSheep(0, 2);    
+                    SwitchToSheep(0, 2); 
                 }
 
                 else if (!sheepSpawned[2] && !sheepSpawned[1])
@@ -112,8 +112,8 @@ public class SheepSpawning : MonoBehaviour
                 }
 
                 else if (sheepSpawned[2])
-                {
-                    SwitchToFirstSheep(2);   
+                { 
+                    SwitchToFirstSheep(2);
                 }
 
                 else if (!sheepSpawned[2] && sheepSpawned[1])
@@ -122,7 +122,7 @@ public class SheepSpawning : MonoBehaviour
                 }
 
                 else if (sheepSpawned[0] && !sheepSpawned[1] && !sheepSpawned[2])
-                {
+                { 
                     SwitchToFirstSheep(0);
                 }
             }

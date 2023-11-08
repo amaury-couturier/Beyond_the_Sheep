@@ -65,4 +65,9 @@ public class PlayerAnimation : MonoBehaviour
         playerAnimator.Play(newState);
         currentState = newState;
     }
+
+    public void ResetToIdleAnimation()
+    {
+        PlayAnimation(playerIdle);
+    }
 }

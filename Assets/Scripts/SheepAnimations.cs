@@ -35,4 +35,9 @@ public class SheepAnimation : MonoBehaviour
         sheepAnimator.Play(newState);
         currentState = newState;
     }
+
+    public void ResetToSheepIdleAnimation()
+    {
+        PlayAnimation(sheepIdle);
+    }
 }

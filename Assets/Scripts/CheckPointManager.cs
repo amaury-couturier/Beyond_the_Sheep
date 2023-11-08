@@ -6,6 +6,7 @@ public class CheckPointManager : MonoBehaviour
 {
     [SerializeField] private Transform player;
     [SerializeField] private float respawnThreshold = -6.0f;
+    [SerializeField] private GameObject checkpointsParent;
 
     private Vector3 respawnPoint;
 
