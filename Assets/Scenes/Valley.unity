@@ -7167,7 +7167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7392159437688562469, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
       propertyPath: distanceBehindPlayer
-      value: 0.7
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 8867565238652882267, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
       propertyPath: jumpForce
