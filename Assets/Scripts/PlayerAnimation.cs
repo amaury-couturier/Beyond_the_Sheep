@@ -6,6 +6,7 @@ public class PlayerAnimation : MonoBehaviour
 {
     private Animator playerAnimator;
     private PlayerMovement playerMovement;
+    private SheepSpawning sheepSpawning;
 
     public string currentState;
     public string playerIdle = "playerIdle";
@@ -20,6 +21,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         playerAnimator = GetComponentInChildren<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
+        sheepSpawning = GetComponent<SheepSpawning>();
     }
 
     void Update()
@@ -29,7 +31,12 @@ public class PlayerAnimation : MonoBehaviour
             playerMovement.ChangePos();
         }
         
-        if (playerMovement.isRunning && playerMovement.IsGrounded() && !playerMovement.isDashing)
+        if (!sheepSpawning.playerActive)
+        {
+            PlayAnimation(playerIdle);
+        }
+        
+        if (playerMovement.isRunning && playerMovement.IsGrounded() && !playerMovement.isDashing && sheepSpawning.playerActive)
         {
             PlayAnimation(playerRun);
         }
@@ -37,6 +44,7 @@ public class PlayerAnimation : MonoBehaviour
         {
             PlayAnimation(playerIdle);
         }
+        
         else if (playerMovement.isJumping && !playerMovement.IsWalled() && !playerMovement.isGrabbing && !playerMovement.isDashing)
         {
             PlayAnimation(playerJump);

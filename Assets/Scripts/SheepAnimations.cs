@@ -27,6 +27,7 @@ public class SheepAnimation : MonoBehaviour
         {
             PlayAnimation(sheepIdle);
         }
+        
     }
 
     public void PlayAnimation(string newState)

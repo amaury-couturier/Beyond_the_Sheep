@@ -7,6 +7,7 @@ public class SheepSpawning : MonoBehaviour
     [SerializeField] private GameObject sheepPrefab;
     [SerializeField] private float distanceBehindPlayer;
     private PlayerMovement playerMovement;
+    public bool playerActive = true;
 
     private GameObject[] spawnedSheep = new GameObject[3];
     private bool[] sheepSpawned = new bool[3];
@@ -167,6 +168,7 @@ public class SheepSpawning : MonoBehaviour
 
     private void SwitchToPlayer(int old)
     {
+        playerActive = true;
         Camera.main.GetComponent<CameraFollow>().SetTarget(playerMovement.transform);
         spawnedSheep[old].GetComponent<SheepMovement>().enabled = false;
         playerMovement.enabled = true;
@@ -174,6 +176,7 @@ public class SheepSpawning : MonoBehaviour
 
     private void SwitchToSheep(int current, int newer)
     {
+        playerActive = false;
         Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[newer].transform);
         spawnedSheep[current].GetComponent<SheepMovement>().enabled = false;
         spawnedSheep[newer].GetComponent<SheepMovement>().enabled = true;
@@ -181,6 +184,7 @@ public class SheepSpawning : MonoBehaviour
 
     private void SwitchToFirstSheep(int first)
     {
+        playerActive = false;
         Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[first].transform);
         playerMovement.enabled = false;
         spawnedSheep[first].GetComponent<SheepMovement>().enabled = true; 
