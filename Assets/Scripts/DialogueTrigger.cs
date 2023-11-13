@@ -5,14 +5,16 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
-
     private bool hasTriggered = false;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && !hasTriggered)
         {
-            TriggerDialogue();
+            if (!PlayerPrefs.HasKey("DialogueTriggered_" + gameObject.name))
+            {
+                TriggerDialogue();
+            }
         }
     }
 
@@ -22,7 +24,8 @@ public class DialogueTrigger : MonoBehaviour
         {
             FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
             hasTriggered = true;
-            // Disable the collider to prevent further triggers
+            PlayerPrefs.SetInt("DialogueTriggered_" + gameObject.name, 1);
+            PlayerPrefs.Save();
             GetComponent<Collider2D>().enabled = false;
         }
     }
