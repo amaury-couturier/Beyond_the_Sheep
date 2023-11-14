@@ -33,13 +33,13 @@ public class SheepSpawning : MonoBehaviour
                 Vector3 spawnPosition = transform.position + new Vector3(xOffset, 0, 0);
                 spawnedSheep[i] = Instantiate(sheepPrefab, spawnPosition, Quaternion.identity);
                 sheepSpawned[i] = true;
-                distanceBehindPlayer += 0.6f;
+                distanceBehindPlayer += 0.4f;
             }
             else if (sheepSpawned[i] && Input.GetKeyDown(KeyCode.Alpha1 + i) && !spawnedSheep[i].GetComponent<SheepMovement>().enabled)
             {
                 Destroy(spawnedSheep[i]);
                 sheepSpawned[i] = false;
-                distanceBehindPlayer -= 0.6f;
+                distanceBehindPlayer -= 0.4f;
             }
         }
 
