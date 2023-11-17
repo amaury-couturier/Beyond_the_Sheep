@@ -11,35 +11,59 @@ public class SheepSpawning : MonoBehaviour
 
     private GameObject[] spawnedSheep = new GameObject[3];
     private bool[] sheepSpawned = new bool[3];
+    
+    private Vector3 spawnPosition;
+
+    [SerializeField] private float raycastDistance = 0.5f;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask wallLayer;
+    private Vector3 leftHitPoint;
+    private Vector3 rightHitPoint;
 
     void Awake()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
+
     }
 
     void Update()
     {
         InputHandler();
+        //CheckSpawnOnGroundOrWall();
     }
 
     private void InputHandler()
     {
+        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left, raycastDistance, groundLayer | wallLayer);
+        RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right, raycastDistance, groundLayer | wallLayer);
+        
         for (int i = 0; i < 3; i++)
         {
             if (!sheepSpawned[i] && Input.GetKeyDown(KeyCode.Alpha1 + i))
             {
+                if (hitLeft.collider != null && playerMovement.isFacingRight)
+                {
+                    distanceBehindPlayer = 0.3f;
+                    Debug.Log("Left ");
+                }
+                if (hitRight.collider != null && !playerMovement.isFacingRight)
+                {
+                    distanceBehindPlayer = 0.3f;
+                    Debug.Log("Right ");
+                }
+
                 float xOffset = (transform.localScale.x > 0) ? -distanceBehindPlayer : distanceBehindPlayer;
-                Vector3 spawnPosition = transform.position + new Vector3(xOffset, 0, 0);
+                spawnPosition = transform.position + new Vector3(xOffset, 0, 0);
                 spawnedSheep[i] = Instantiate(sheepPrefab, spawnPosition, Quaternion.identity);
                 sheepSpawned[i] = true;
-                distanceBehindPlayer += 0.4f;
+                distanceBehindPlayer += 0.2f;
             }
             else if (sheepSpawned[i] && Input.GetKeyDown(KeyCode.Alpha1 + i) && !spawnedSheep[i].GetComponent<SheepMovement>().enabled)
             {
                 Destroy(spawnedSheep[i]);
                 sheepSpawned[i] = false;
-                distanceBehindPlayer -= 0.4f;
+                distanceBehindPlayer -= 0.2f;
             }
         }
 
@@ -190,5 +214,17 @@ public class SheepSpawning : MonoBehaviour
         Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[first].transform);
         playerMovement.enabled = false;
         spawnedSheep[first].GetComponent<SheepMovement>().enabled = true; 
+    }
+
+    private void OnDrawGizmos()
+    {
+         Gizmos.color = Color.red;
+
+        // Simulate raycasts for Gizmos drawing
+        Vector3 simulatedLeftHitPoint = transform.position + Vector3.left * raycastDistance;
+        Vector3 simulatedRightHitPoint = transform.position + Vector3.right * raycastDistance;
+
+        Gizmos.DrawLine(transform.position, simulatedLeftHitPoint);
+        Gizmos.DrawLine(transform.position, simulatedRightHitPoint);
     }
 }

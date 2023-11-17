@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 4478493147097523517}
   - component: {fileID: 7913726813981447024}
   - component: {fileID: 7926905375087901494}
+  - component: {fileID: -8375704623511048386}
   m_Layer: 8
   m_Name: Sheep
   m_TagString: Sheep
@@ -186,6 +187,25 @@ MonoBehaviour:
   currentState: 
   sheepIdle: sheepIdle
   sheepWalk: sheepWalk
+--- !u!114 &-8375704623511048386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3044044739984116352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d3dccba3fd8e1e4ba767da93de0f8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  moveOutDistance: 0.8
 --- !u!1 &4343539729041361081
 GameObject:
   m_ObjectHideFlags: 0
