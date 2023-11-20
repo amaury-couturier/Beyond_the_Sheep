@@ -53,7 +53,7 @@ public class PlayerAnimation : MonoBehaviour
         {
             PlayAnimation(playerDash);
         }
-        else if (!playerMovement.isJumping && !playerMovement.IsGrounded())
+        else if (playerMovement.isWallJumping)
         {
             PlayAnimation(playerWallJump);
         }
