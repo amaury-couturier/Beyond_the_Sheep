@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float wallSlidingSpeed = 2f;
     private float wallJumpingDirection;
     [SerializeField] private float wallJumpingTime = 0.2f;
-    private float wallJumpingCounter;
+    public float wallJumpingCounter;
     [SerializeField] private float wallJumpingDuration = 0.5f;
     [SerializeField] private Vector2 wallJumpingPower = new Vector2(12f, 14f);
     public bool isWallSliding;
@@ -186,7 +186,7 @@ public class PlayerMovement : MonoBehaviour
     //Checks to see if the Ground Check transform is overlapping with any "Ground" Layers, if it is, return true
     public bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround | whatIsSheep);
+        return Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround | whatIsSheep | whatIsWall);
     }
 
     //Checks to see if the Wall Check transform is overlapping with any "Wall" Layers, if it is, return true

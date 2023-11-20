@@ -26,12 +26,10 @@ public class SceneController : MonoBehaviour
     public void LoadNextLevel()
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
-        Debug.Log("called");
     }
 
     IEnumerator LoadLevel(int levelIndex)
     {
-        Debug.Log("coroutine");
         transition.SetTrigger("End");
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(levelIndex);

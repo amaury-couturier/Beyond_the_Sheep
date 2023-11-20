@@ -9,9 +9,13 @@ public class JumpPad : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
         // Be sure to change tag to sheep later on 
-        if (collider.gameObject.CompareTag("Player") || collider.gameObject.CompareTag("Sheep"))
+        if (collider.CompareTag("Player") || collider.CompareTag("Sheep"))
         {
-            collider.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * bounce, ForceMode2D.Impulse);
+            Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.AddForce(Vector2.up * bounce, ForceMode2D.Impulse);
+            }
         }
     }
 }
