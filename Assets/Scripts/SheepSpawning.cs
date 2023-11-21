@@ -6,6 +6,7 @@ public class SheepSpawning : MonoBehaviour
 {
     [SerializeField] private GameObject sheepPrefab;
     [SerializeField] private float distanceBehindPlayer;
+    [SerializeField] private float respawnThreshold = -6.0f;
     private PlayerMovement playerMovement;
     public bool playerActive = true;
 
@@ -59,7 +60,7 @@ public class SheepSpawning : MonoBehaviour
                 sheepSpawned[i] = true;
                 distanceBehindPlayer += 0.2f;
             }
-            else if (sheepSpawned[i] && Input.GetKeyDown(KeyCode.Alpha1 + i) && !spawnedSheep[i].GetComponent<SheepMovement>().enabled)
+            else if (sheepSpawned[i] && (Input.GetKeyDown(KeyCode.Alpha1 + i) || (spawnedSheep[i] != null && spawnedSheep[i].transform.position.y < respawnThreshold)) && !spawnedSheep[i].GetComponent<SheepMovement>().enabled)
             {
                 Destroy(spawnedSheep[i]);
                 sheepSpawned[i] = false;
