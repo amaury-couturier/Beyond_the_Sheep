@@ -103,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            isRunning =  Mathf.Abs(inputHorizontal) > 0.0f;;
+            isRunning =  Mathf.Abs(inputHorizontal) > 0.0f;
         }
 
         UpdateCoyoteTime();
@@ -206,7 +206,7 @@ public class PlayerMovement : MonoBehaviour
             targetVelocityX = inputHorizontal * playerMaxSpeed;
             float t = acceleration * Time.deltaTime;
             currentVelocityX = Mathf.Lerp(currentVelocityX, targetVelocityX, t);
-
+            
             // Apply air resistance or linear drag when jumping
             if (!IsGrounded())
             {

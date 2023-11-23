@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Sheep
   - Checkpoint
+  - Music
   layers:
   - Default
   - TransparentFX

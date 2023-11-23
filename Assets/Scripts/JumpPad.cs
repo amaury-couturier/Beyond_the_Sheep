@@ -5,6 +5,7 @@ using UnityEngine;
 public class JumpPad : MonoBehaviour
 {
     [SerializeField] private float bounce;
+    [SerializeField] private AudioSource jumpSoundEffect;
 
     void OnTriggerEnter2D(Collider2D collider)
     {
@@ -14,6 +15,7 @@ public class JumpPad : MonoBehaviour
             Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
+                jumpSoundEffect.Play();
                 rb.AddForce(Vector2.up * bounce, ForceMode2D.Impulse);
             }
         }
