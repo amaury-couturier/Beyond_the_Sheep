@@ -356,6 +356,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(0f, 0f);
             rb.gravityScale = 0f;
+            return;
         }
     }
 

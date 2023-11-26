@@ -23,6 +23,8 @@ public class SheepMovement : MonoBehaviour
     private bool canMove = true; 
     [SerializeField] private float moveDisableTime = 0.4f; 
     private float moveDisableTimer = 0f;
+    [SerializeField] private float stackedMass = 3.5f; 
+    private float originalMass; 
 
     [Header("Componenets")]
     [SerializeField] private Rigidbody2D rb;
@@ -30,6 +32,11 @@ public class SheepMovement : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private LayerMask whatIsSheep;
     public bool isFacingRight = true;
+
+     void Start()
+    {
+        originalMass = rb.mass; 
+    }
 
     void Update()
     {
@@ -106,6 +113,7 @@ public class SheepMovement : MonoBehaviour
                 {
                     Transform hitSheepTransform = hit.collider.transform;
                     Transform hitSnapCheck = hitSheepTransform.Find("Snap Check");
+                    rb.mass = stackedMass;
 
                     if (hitSnapCheck != null)
                     {
@@ -114,9 +122,19 @@ public class SheepMovement : MonoBehaviour
                         transform.position = newPosition;
                         moveDisableTimer = moveDisableTime;
                         canMove = false; 
+                        rb.mass = stackedMass;
                     }
                 }
+                else if (hit.collider.CompareTag("Sheep") && hasSnapped)
+                {
+                    rb.mass = stackedMass;
+                }
             }
+        }
+
+        else if (hit.collider == null)
+        {
+            rb.mass = originalMass;
         }
     }   
 

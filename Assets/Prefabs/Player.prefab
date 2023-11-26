@@ -222,7 +222,6 @@ MonoBehaviour:
   greenXSize: 0.1
   greenYSize: 0.05
   isGrabbing: 0
-  runSoundEffect: {fileID: 0}
   rb: {fileID: 2632010381562871568}
   groundCheck: {fileID: 3573471888857412153}
   whatIsGround:
@@ -431,8 +430,9 @@ MonoBehaviour:
   sheepPrefab: {fileID: 3044044739984116352, guid: 18db7fd3b04d60248b50c684a4e8b806, type: 3}
   distanceBehindPlayer: 0.7
   respawnThreshold: -6
+  distanceOffset: 0.7
   playerActive: 1
-  raycastDistance: 1
+  raycastDistance: 2
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
