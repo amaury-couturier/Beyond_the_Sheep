@@ -60,30 +60,12 @@ public class PlayerMovement : MonoBehaviour
     public bool isFacingRight = true;
 
     [Header("Checkpoints")]
-    [SerializeField] private GameObject checkpointsParent;
-    public GameObject[] checkpointsArray;
-    private Vector3 startingPoint;
+    [SerializeField] private Vector3 respawnPoint;
     [SerializeField] private float respawnThreshold = -6.0f;
-    private const string SAVE_CHECKPOINT_INDEX = "Last_checkpoint_index";
-
-    void Awake()
-    {
-        LoadCheckpoints();
-    }
 
     void Start()
     {
-        int savedCheckpointIndex = -1;
-        savedCheckpointIndex = PlayerPrefs.GetInt(SAVE_CHECKPOINT_INDEX, -1);
-        if (savedCheckpointIndex != -1)
-        {
-            startingPoint = checkpointsArray[savedCheckpointIndex].transform.position;
-            RespawnPlayer();
-        }
-        else
-        {
-            startingPoint = gameObject.transform.position;
-        }
+        respawnPoint = transform.position;
     }
 
     void Update()
@@ -149,37 +131,8 @@ public class PlayerMovement : MonoBehaviour
     // Checkpoint methods
     private void RespawnPlayer()
     {
-        gameObject.transform.position = startingPoint;
+        gameObject.transform.position = respawnPoint;
         rb.velocity = Vector3.zero;
-    }
-
-    private void LoadCheckpoints()
-    {
-        checkpointsArray = new GameObject[checkpointsParent.transform.childCount];
-
-        int index = 0;
-
-        foreach (Transform singleCheckpoint in checkpointsParent.transform)
-        {
-            checkpointsArray[index] = singleCheckpoint.gameObject;
-            index++;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Checkpoint")
-        {
-            int checkpointIndex = -1;
-            checkpointIndex = Array.FindIndex(checkpointsArray, match => match == collision.gameObject);
-
-            if (checkpointIndex != -1)
-            {
-                PlayerPrefs.SetInt(SAVE_CHECKPOINT_INDEX, checkpointIndex);
-                startingPoint = collision.gameObject.transform.position;
-                collision.gameObject.SetActive(false);
-            }
-        }
     }
 
     //Methods
@@ -366,6 +319,14 @@ public class PlayerMovement : MonoBehaviour
         transform.position = new Vector2(transform.position.x + (0.5f * transform.localScale.x), transform.position.y + 0.7f);
         rb.gravityScale = originalGravity;
         isGrabbing = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Checkpoint")
+        {
+            respawnPoint = transform.position;
+        }
     }
     
     private void OnDrawGizmos()

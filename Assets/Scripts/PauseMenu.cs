@@ -41,6 +41,7 @@ public class PauseMenu : MonoBehaviour
     public void Options()
     {
         pauseMenuUI.SetActive(false);
+        gameIsPaused = true;
     }
 
     public void LoadMenu()

@@ -84,7 +84,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -152,7 +152,6 @@ GameObject:
   - component: {fileID: 5662638796973848819}
   - component: {fileID: 7392159437688562469}
   - component: {fileID: 2858326164217154311}
-  - component: {fileID: 765178797924916031}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -169,7 +168,7 @@ Transform:
   m_GameObject: {fileID: 1742102688566867916}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.47, y: 4.51, z: 0}
+  m_LocalPosition: {x: 0, y: -1.38, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -237,8 +236,7 @@ MonoBehaviour:
   tr: {fileID: 5662638796973848819}
   dust: {fileID: 1448658502813925542}
   isFacingRight: 1
-  checkpointsParent: {fileID: 0}
-  checkpointsArray: []
+  respawnPoint: {x: 0, y: 0, z: 0}
   respawnThreshold: -6
 --- !u!50 &2632010381562871568
 Rigidbody2D:
@@ -430,7 +428,7 @@ MonoBehaviour:
   sheepPrefab: {fileID: 3044044739984116352, guid: 18db7fd3b04d60248b50c684a4e8b806, type: 3}
   distanceBehindPlayer: 0.7
   respawnThreshold: -6
-  distanceOffset: 0.7
+  distanceOffset: 0.18
   playerActive: 1
   raycastDistance: 2
   groundLayer:
@@ -438,7 +436,7 @@ MonoBehaviour:
     m_Bits: 64
   wallLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
 --- !u!114 &2858326164217154311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,21 +457,6 @@ MonoBehaviour:
   playerWallJump: playerWallJump
   playerWallSlide: playerWallSlide
   playerDash: playerDash
---- !u!114 &765178797924916031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742102688566867916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96eb5945d1ff6ab4b9369b9e6f3936ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 394751821408588884}
-  respawnThreshold: -6
-  checkpointsParent: {fileID: 0}
 --- !u!1 &4742713282798788814
 GameObject:
   m_ObjectHideFlags: 0

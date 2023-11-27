@@ -11,7 +11,7 @@ public class SheepSpawning : MonoBehaviour
     private PlayerMovement playerMovement;
     public bool playerActive = true;
 
-    private GameObject[] spawnedSheep = new GameObject[3];
+    public GameObject[] spawnedSheep = new GameObject[3];
     private bool[] sheepSpawned = new bool[3];
     
     private Vector3 spawnPosition;
