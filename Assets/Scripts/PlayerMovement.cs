@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -111,9 +112,10 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         }
 
-        if (transform.position.y <= respawnThreshold)
+        if (transform.position.y <= respawnThreshold || Input.GetKeyDown(KeyCode.R))
         {
-            RespawnPlayer();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            RespawnPlayer(); 
         }
     }
 

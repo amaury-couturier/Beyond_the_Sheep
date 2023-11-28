@@ -430,6 +430,10 @@ MonoBehaviour:
   respawnThreshold: -6
   distanceOffset: 0.18
   playerActive: 1
+  spawnedSheep:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   raycastDistance: 2
   groundLayer:
     serializedVersion: 2

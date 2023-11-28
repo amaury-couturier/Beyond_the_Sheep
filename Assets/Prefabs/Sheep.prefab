@@ -91,7 +91,7 @@ MonoBehaviour:
   hasSnapped: 0
   snapCheck: {fileID: 8057772286798104876}
   moveDisableTime: 1
-  stackedMass: 3.5
+  stackedMass: 2
   rb: {fileID: 4478493147097523517}
   groundCheck: {fileID: 8867236626177159963}
   whatIsGround:
