@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isFacingRight = true;
 
     [Header("Checkpoints")]
-    [SerializeField] private Vector3 respawnPoint;
+    private Vector3 respawnPoint;
     [SerializeField] private float respawnThreshold = -6.0f;
 
     void Start()
@@ -112,10 +112,13 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         }
 
-        if (transform.position.y <= respawnThreshold || Input.GetKeyDown(KeyCode.R))
+        if (transform.position.y <= respawnThreshold)
+        {
+            RespawnPlayer(); 
+        }
+        if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            RespawnPlayer(); 
         }
     }
 

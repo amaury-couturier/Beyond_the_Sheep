@@ -32,7 +32,6 @@ public class SheepSpawning : MonoBehaviour
     void Update()
     {
         InputHandler();
-        //CheckSpawnOnGroundOrWall();
     }
 
     private void InputHandler()

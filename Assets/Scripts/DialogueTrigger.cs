@@ -24,8 +24,6 @@ public class DialogueTrigger : MonoBehaviour
         {
             FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
             hasTriggered = true;
-            PlayerPrefs.SetInt("DialogueTriggered_" + gameObject.name, 1);
-            PlayerPrefs.Save();
             GetComponent<Collider2D>().enabled = false;
         }
     }

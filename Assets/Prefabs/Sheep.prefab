@@ -91,7 +91,6 @@ MonoBehaviour:
   hasSnapped: 0
   snapCheck: {fileID: 8057772286798104876}
   moveDisableTime: 1
-  stackedMass: 2
   rb: {fileID: 4478493147097523517}
   groundCheck: {fileID: 8867236626177159963}
   whatIsGround:
@@ -113,7 +112,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 7
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3.5
