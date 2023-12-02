@@ -42,11 +42,11 @@ GameObject:
   - component: {fileID: 3555162953785970516}
   - component: {fileID: 5155508958398260925}
   - component: {fileID: 4478493147097523517}
-  - component: {fileID: 8497411099682897946}
+  - component: {fileID: 8330999257900124976}
   - component: {fileID: 7926905375087901494}
   - component: {fileID: -8375704623511048386}
   m_Layer: 8
-  m_Name: Sheep
+  m_Name: Sheep 2
   m_TagString: Sheep
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 3044044739984116352}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.797676, y: -1.4281693, z: 0}
+  m_LocalPosition: {x: 1.3277075, y: -1.3681206, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -91,6 +91,7 @@ MonoBehaviour:
   hasSnapped: 0
   snapCheck: {fileID: 8057772286798104876}
   moveDisableTime: 1
+  respawnThreshold: -10
   rb: {fileID: 4478493147097523517}
   groundCheck: {fileID: 8867236626177159963}
   whatIsGround:
@@ -127,7 +128,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!60 &8497411099682897946
+--- !u!60 &8330999257900124976
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,23 +172,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.34754324, y: -0.14528787}
-      - {x: 0.3275652, y: -0.12916064}
-      - {x: 0.30639267, y: -0.0323776}
-      - {x: 0.24362516, y: -0.0024992228}
-      - {x: 0.022683382, y: -0.006690681}
-      - {x: -0.19652462, y: -0.013503432}
-      - {x: -0.2989481, y: -0.07540259}
-      - {x: -0.2988538, y: -0.45938385}
-      - {x: 0.11834967, y: -0.4569378}
-      - {x: 0.17389059, y: -0.4211359}
-      - {x: 0.2195878, y: -0.38364267}
-      - {x: 0.25092196, y: -0.35218525}
-      - {x: 0.27787066, y: -0.31498826}
-      - {x: 0.30405283, y: -0.29356456}
-      - {x: 0.36466408, y: -0.23803484}
-      - {x: 0.37360954, y: -0.199821}
-      - {x: 0.36570835, y: -0.16633445}
+    - - {x: 0.31097603, y: -0.028966546}
+      - {x: -0.21241951, y: -0.022018671}
+      - {x: -0.31410939, y: -0.07909915}
+      - {x: -0.3134765, y: -0.45470595}
+      - {x: 0.1627903, y: -0.45566857}
+      - {x: 0.37391663, y: -0.19197232}
   m_UseDelaunayMesh: 0
 --- !u!114 &7926905375087901494
 MonoBehaviour:
@@ -264,7 +254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8354725722564576139}
   - component: {fileID: 4503647552789978287}
-  - component: {fileID: 6495780470734539996}
+  - component: {fileID: 7655159948962046135}
   m_Layer: 0
   m_Name: sheepAnimations
   m_TagString: Untagged
@@ -328,7 +318,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1541295097, guid: 09afc5d1dffed644cbd008ba117df5eb, type: 3}
+  m_Sprite: {fileID: 1319585852, guid: 33e12ee6ed3772541983e39331dc68d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -339,7 +329,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &6495780470734539996
+--- !u!95 &7655159948962046135
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -349,7 +339,7 @@ Animator:
   m_GameObject: {fileID: 6646584885136520700}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 43391bbd8a4d231428458d9745878d36, type: 2}
+  m_Controller: {fileID: 9100000, guid: 714970cfc26a0d44287721d026b1e9dd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

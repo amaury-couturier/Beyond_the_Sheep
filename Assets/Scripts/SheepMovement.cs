@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SheepMovement : MonoBehaviour
 {
@@ -23,6 +24,10 @@ public class SheepMovement : MonoBehaviour
     private bool canMove = true; 
     [SerializeField] private float moveDisableTime = 0.4f; 
     private float moveDisableTimer = 0f;
+
+    [Header("Checkpoints")]
+    private Vector3 respawnPoint;
+    [SerializeField] private float respawnThreshold = -6.0f;
 
     [Header("Componenets")]
     [SerializeField] private Rigidbody2D rb;
@@ -62,16 +67,23 @@ public class SheepMovement : MonoBehaviour
             }
         }
 
+        if (transform.position.y <= respawnThreshold)
+        {
+            RespawnSheep(); 
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
         else 
         {
-
             CheckForSheepBelow();
 
             FasterFallSpeed();
 
             Flip();
         }
-    
     }
 
     private void FixedUpdate()
@@ -86,6 +98,12 @@ public class SheepMovement : MonoBehaviour
     public bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+    }
+
+    private void RespawnSheep()
+    {
+        gameObject.transform.position = respawnPoint;
+        rb.velocity = Vector3.zero;
     }
 
     private void CheckForSheepBelow()

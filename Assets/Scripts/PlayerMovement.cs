@@ -63,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Checkpoints")]
     private Vector3 respawnPoint;
     [SerializeField] private float respawnThreshold = -6.0f;
+    [SerializeField] private ParticleSystem checkPointEffect;
 
     void Start()
     {
@@ -72,8 +73,15 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //Simply return in case isDashing is true so the player is not allowed to move or jump while dahsing
-        if(isDashing)
+        if (isDashing)
         {
+            return;
+        }
+
+        if (isGrabbing)
+        {
+            rb.velocity = new Vector2(0f, 0f);
+            rb.gravityScale = 0f;
             return;
         }
 
@@ -309,13 +317,6 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrabbing = true;
         }
-
-        if (isGrabbing)
-        {
-            rb.velocity = new Vector2(0f, 0f);
-            rb.gravityScale = 0f;
-            return;
-        }
     }
 
     // Use for when animations are set up
@@ -331,6 +332,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.tag == "Checkpoint")
         {
             respawnPoint = transform.position;
+            checkPointEffect.Play();
         }
     }
     

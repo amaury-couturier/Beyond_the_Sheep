@@ -23,15 +23,15 @@ public class PlayerIndicator : MonoBehaviour
         {
             playerText.text = playerIsActive;
         }
-        else if (sheepSpawning.spawnedSheep[0].GetComponent<SheepMovement>().enabled)
+        if (sheepSpawning.spawnedSheep[0].GetComponent<SheepMovement>().enabled)
         {
             playerText.text = sheep1Active;
         }
-        else if (sheepSpawning.spawnedSheep[1].GetComponent<SheepMovement>().enabled)
+        if (sheepSpawning.spawnedSheep[1].GetComponent<SheepMovement>().enabled)
         {
             playerText.text = sheep2Active;
         }
-        else if (sheepSpawning.spawnedSheep[2].GetComponent<SheepMovement>().enabled)
+        if (sheepSpawning.spawnedSheep[2].GetComponent<SheepMovement>().enabled)
         {
             playerText.text = sheep3Active;
         }

@@ -19,10 +19,9 @@ public class SheepSpawning : MonoBehaviour
     [SerializeField] private float raycastDistance = 0.5f;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private AudioSource whistle;
     private Vector3 leftHitPoint;
     private Vector3 rightHitPoint;
-
-    [SerializeField] private AudioSource whistle;
 
     void Awake()
     {

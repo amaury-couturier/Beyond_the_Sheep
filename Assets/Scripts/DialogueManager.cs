@@ -70,7 +70,7 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         animator.SetBool("isOpen", false);
-         playerMovement.enabled = true;
+        playerMovement.enabled = true;
         sheepSpawning.enabled = true;
     }
 }
