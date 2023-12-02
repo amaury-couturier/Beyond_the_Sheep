@@ -22,6 +22,8 @@ public class SheepSpawning : MonoBehaviour
     private Vector3 leftHitPoint;
     private Vector3 rightHitPoint;
 
+    [SerializeField] private AudioSource whistle;
+
     void Awake()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -65,6 +67,7 @@ public class SheepSpawning : MonoBehaviour
                 spawnedSheep[i] = Instantiate(sheepPrefab, spawnPosition, Quaternion.identity);
                 sheepSpawned[i] = true;
                 distanceBehindPlayer += distanceOffset;
+                whistle.Play();
             }
             else if (sheepSpawned[i] && (Input.GetKeyDown(KeyCode.Alpha1 + i) || (spawnedSheep[i] != null && spawnedSheep[i].transform.position.y < respawnThreshold)) && !spawnedSheep[i].GetComponent<SheepMovement>().enabled)
             {
