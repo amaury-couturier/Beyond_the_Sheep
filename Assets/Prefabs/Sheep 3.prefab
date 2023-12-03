@@ -43,8 +43,8 @@ GameObject:
   - component: {fileID: 5155508958398260925}
   - component: {fileID: 4478493147097523517}
   - component: {fileID: 8330999257900124976}
-  - component: {fileID: 7926905375087901494}
   - component: {fileID: -8375704623511048386}
+  - component: {fileID: 2786902247779926627}
   m_Layer: 8
   m_Name: Sheep 3
   m_TagString: Sheep
@@ -179,21 +179,6 @@ PolygonCollider2D:
       - {x: 0.1627903, y: -0.45566857}
       - {x: 0.37391663, y: -0.19197232}
   m_UseDelaunayMesh: 0
---- !u!114 &7926905375087901494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3044044739984116352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d51b91d08131751498326eb3e4983d69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 
-  sheepIdle: sheepIdle
-  sheepWalk: sheepWalk
 --- !u!114 &-8375704623511048386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +198,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveOutDistance: 0.8
+--- !u!114 &2786902247779926627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3044044739984116352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c45e0c965ba2624c9dc3f5ae882570a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 
+  sheep3Idle: sheep3Idle
+  sheep3Walk: sheep3Walk
 --- !u!1 &4343539729041361081
 GameObject:
   m_ObjectHideFlags: 0

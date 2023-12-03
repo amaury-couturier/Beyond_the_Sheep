@@ -10,6 +10,7 @@ public class SheepSpawning : MonoBehaviour
     [SerializeField] private float distanceOffset = 0.4f;
     private PlayerMovement playerMovement;
     public bool playerActive = true;
+    private GameObject player;
 
     public GameObject[] spawnedSheep = new GameObject[3];
     private bool[] sheepSpawned = new bool[3];
@@ -20,55 +21,43 @@ public class SheepSpawning : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private AudioSource whistle;
+    [SerializeField] private GameObject arrow;
     private Vector3 leftHitPoint;
     private Vector3 rightHitPoint;
 
     void Awake()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
     }
 
     void Update()
     {
         InputHandler();
-    }
-
-    void SpawnLogic(int index, int prefabNum)
-    {
-        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left, raycastDistance, groundLayer | wallLayer);
-        RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right, raycastDistance, groundLayer | wallLayer);
-
-        if (hitRight.collider != null && playerMovement.isFacingRight)
+        
+        if (player.transform.position.y <= playerMovement.respawnThreshold)
         {
-            // Spawn sheep behind the player when facing right and hitting a wall
-            float xOffset = -distanceBehindPlayer;
-            spawnPosition = transform.position + new Vector3(xOffset, 0, 0);
+            SwitchBackToPlayerAfterDeath();
+            DespawnAllSheep();
         }
-        else if (hitLeft.collider != null && !playerMovement.isFacingRight)
+
+        if (playerActive)
         {
-            // Spawn sheep behind the player when facing left and hitting a wall
-            float xOffset = distanceBehindPlayer;
-            spawnPosition = transform.position + new Vector3(xOffset, 0, 0);
+            MoveArrowToSpot(playerMovement.transform.position);
+
+            
         }
         else
         {
-            // Spawn sheep in front of player when not hitting any walls
-            float xOffset = (transform.localScale.x > 0) ? distanceBehindPlayer : -distanceBehindPlayer;
-            spawnPosition = transform.position + new Vector3(xOffset, 0, 0);
+            for (int i = 0; i < spawnedSheep.Length; i++)
+            {
+                if (sheepSpawned[i] && spawnedSheep[i] != null && spawnedSheep[i].GetComponent<SheepMovement>().enabled)
+                {
+                    MoveArrowToSpot(spawnedSheep[i].transform.position);
+                    break;
+                }
+            }
         }
-        
-        spawnedSheep[index] = Instantiate(sheepPrefabs[prefabNum], spawnPosition, Quaternion.identity);
-        sheepSpawned[index] = true;
-        distanceBehindPlayer += distanceOffset;
-        whistle.Play();
-    }
-
-    void DespawnLogic(int index)
-    {
-        Destroy(spawnedSheep[index]);
-        sheepSpawned[index] = false;
-        distanceBehindPlayer -= distanceOffset;
     }
 
     private void InputHandler()
@@ -77,7 +66,7 @@ public class SheepSpawning : MonoBehaviour
         {
             SpawnLogic(0, 0);
         }
-        else if (sheepSpawned[0] && (Input.GetKeyDown(KeyCode.Alpha1) && spawnedSheep[0] != null || (spawnedSheep[0] != null && spawnedSheep[0].transform.position.y < respawnThreshold)) && !spawnedSheep[0].GetComponent<SheepMovement>().enabled)
+        else if (sheepSpawned[0] && (Input.GetKeyDown(KeyCode.Alpha1) && spawnedSheep[0] != null || (spawnedSheep[0] && spawnedSheep[0].transform.position.y < respawnThreshold)) && !spawnedSheep[0].GetComponent<SheepMovement>().enabled)
         {
             DespawnLogic(0);
         }
@@ -100,45 +89,6 @@ public class SheepSpawning : MonoBehaviour
             DespawnLogic(2);
         }
         
-        /*for (int i = 0; i < 3; i++)
-        {
-            if (!sheepSpawned[i] && Input.GetKeyDown(KeyCode.Alpha1 + i))
-            {
-                int prefabIndex = Mathf.Clamp(i, 0, sheepPrefabs.Length - 1);
-
-                if (hitRight.collider != null && playerMovement.isFacingRight)
-                {
-                    // Spawn sheep behind the player when facing right and hitting a wall
-                    float xOffset = -distanceBehindPlayer;
-                    spawnPosition = transform.position + new Vector3(xOffset, 0, 0);
-                }
-                else if (hitLeft.collider != null && !playerMovement.isFacingRight)
-                {
-                    // Spawn sheep behind the player when facing left and hitting a wall
-                    float xOffset = distanceBehindPlayer;
-                    spawnPosition = transform.position + new Vector3(xOffset, 0, 0);
-                }
-                else
-                {
-                    // Spawn sheep in front of player when not hitting any walls
-                    float xOffset = (transform.localScale.x > 0) ? distanceBehindPlayer : -distanceBehindPlayer;
-                    spawnPosition = transform.position + new Vector3(xOffset, 0, 0);
-                }
-                
-                spawnedSheep[i] = Instantiate(sheepPrefabs[prefabIndex], spawnPosition, Quaternion.identity);
-                sheepSpawned[i] = true;
-                distanceBehindPlayer += distanceOffset;
-                whistle.Play();
-            }
-            else if (sheepSpawned[i] && (Input.GetKeyDown(KeyCode.Alpha1 + i) || (spawnedSheep[i] != null && spawnedSheep[i].transform.position.y < respawnThreshold)) && !spawnedSheep[i].GetComponent<SheepMovement>().enabled)
-            {
-                // Destroy the spawned sheep and reset the distanceBehindPlayer
-                Destroy(spawnedSheep[i]);
-                sheepSpawned[i] = false;
-                distanceBehindPlayer -= distanceOffset;
-            }
-        }*/
-    
         if (Input.GetAxis("Mouse ScrollWheel") < 0f || Input.GetKeyDown(KeyCode.E))
         {
             if (playerMovement.enabled)
@@ -268,7 +218,27 @@ public class SheepSpawning : MonoBehaviour
     {
         playerActive = true;
         Camera.main.GetComponent<CameraFollow>().SetTarget(playerMovement.transform);
+        MoveArrowToSpot(playerMovement.transform.position);
         spawnedSheep[old].GetComponent<SheepMovement>().enabled = false;
+        playerMovement.enabled = true;
+    }
+
+    private void SwitchBackToPlayerAfterDeath()
+    {
+        playerActive = true;
+        Camera.main.GetComponent<CameraFollow>().SetTarget(playerMovement.transform);
+        MoveArrowToSpot(playerMovement.transform.position);
+
+        // Find the currently active sheep and disable its movement
+        for (int i = 0; i < spawnedSheep.Length; i++)
+        {
+            if (sheepSpawned[i] && spawnedSheep[i] != null && spawnedSheep[i].GetComponent<SheepMovement>().enabled)
+            {
+                spawnedSheep[i].GetComponent<SheepMovement>().enabled = false;
+                break;
+            }
+        }
+
         playerMovement.enabled = true;
     }
 
@@ -276,6 +246,7 @@ public class SheepSpawning : MonoBehaviour
     {
         playerActive = false;
         Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[newer].transform);
+        MoveArrowToSpot(spawnedSheep[newer].transform.position);
         spawnedSheep[current].GetComponent<SheepMovement>().enabled = false;
         spawnedSheep[newer].GetComponent<SheepMovement>().enabled = true;
     }
@@ -284,8 +255,67 @@ public class SheepSpawning : MonoBehaviour
     {
         playerActive = false;
         Camera.main.GetComponent<CameraFollow>().SetTarget(spawnedSheep[first].transform);
+        MoveArrowToSpot(spawnedSheep[first].transform.position);
         playerMovement.enabled = false;
         spawnedSheep[first].GetComponent<SheepMovement>().enabled = true; 
+    }
+
+    void SpawnLogic(int index, int prefabNum)
+    {
+        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left, raycastDistance, groundLayer | wallLayer);
+        RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right, raycastDistance, groundLayer | wallLayer);
+
+        if (hitRight.collider != null && playerMovement.isFacingRight)
+        {
+            // Spawn sheep behind the player when facing right and hitting a wall
+            float xOffset = -distanceBehindPlayer;
+            spawnPosition = transform.position + new Vector3(xOffset, 0, 0);
+        }
+        else if (hitLeft.collider != null && !playerMovement.isFacingRight)
+        {
+            // Spawn sheep behind the player when facing left and hitting a wall
+            float xOffset = distanceBehindPlayer;
+            spawnPosition = transform.position + new Vector3(xOffset, 0, 0);
+        }
+        else
+        {
+            // Spawn sheep in front of player when not hitting any walls
+            float xOffset = (transform.localScale.x > 0) ? distanceBehindPlayer : -distanceBehindPlayer;
+            spawnPosition = transform.position + new Vector3(xOffset, 0, 0);
+        }
+
+        sheepSpawned[index] = true;
+        spawnedSheep[index] = Instantiate(sheepPrefabs[prefabNum], spawnPosition, Quaternion.identity);
+        distanceBehindPlayer += distanceOffset;
+        whistle.Play();
+    }
+
+    void DespawnLogic(int index)
+    {
+        sheepSpawned[index] = false;
+        Destroy(spawnedSheep[index]);
+        distanceBehindPlayer -= distanceOffset;
+        spawnedSheep[index] = null;
+    }
+
+    private void MoveArrowToSpot(Vector3 targetPosition)
+    {
+        targetPosition += new Vector3(-.5f, .25f, 0);
+        float lerpSpeed = 15.0f;
+
+        // Use Lerp in the Update method to gradually move the arrow towards the target position
+        arrow.transform.position = Vector3.Lerp(arrow.transform.position, targetPosition, Time.deltaTime * lerpSpeed);
+    }
+
+    public void DespawnAllSheep()
+    {
+        for (int i = 0; i < spawnedSheep.Length; i++)
+        {
+            if (sheepSpawned[i] && spawnedSheep[i] != null)
+            {
+                DespawnLogic(i);
+            }
+        }
     }
 
     private void OnDrawGizmos()

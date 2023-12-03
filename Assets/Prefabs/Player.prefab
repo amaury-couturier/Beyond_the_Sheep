@@ -5031,6 +5031,15 @@ MonoBehaviour:
   jumpBufferTime: 0.2
   airResistance: 1.5
   isJumping: 0
+  frictionless: {fileID: 6200000, guid: 16b6af32a5d23cf40a04361b87b72428, type: 2}
+  friction: {fileID: 6200000, guid: d708a39408725c34cab09a1f0c939d06, type: 2}
+  raycastDistance: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
   wallSlidingSpeed: 2
   wallJumpingTime: 0.2
   wallJumpingCounter: 0
@@ -5255,15 +5264,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1387004ad7d2044b39f6147671f81e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sheepPrefab: {fileID: 3044044739984116352, guid: 18db7fd3b04d60248b50c684a4e8b806, type: 3}
+  sheepPrefabs:
+  - {fileID: 3044044739984116352, guid: 18db7fd3b04d60248b50c684a4e8b806, type: 3}
+  - {fileID: 3044044739984116352, guid: 8a6a8b12cba78fc4e9524697b6129375, type: 3}
+  - {fileID: 3044044739984116352, guid: e738fea0877e2f542a0d5399beff51b3, type: 3}
   distanceBehindPlayer: 0.7
   respawnThreshold: -6
   distanceOffset: 0.18
   playerActive: 1
   spawnedSheep:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3044044739984116352, guid: 18db7fd3b04d60248b50c684a4e8b806, type: 3}
+  - {fileID: 3044044739984116352, guid: 8a6a8b12cba78fc4e9524697b6129375, type: 3}
+  - {fileID: 3044044739984116352, guid: e738fea0877e2f542a0d5399beff51b3, type: 3}
   raycastDistance: 1.3
   groundLayer:
     serializedVersion: 2
@@ -5272,7 +5284,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   whistle: {fileID: 681371501688030731}
-  arrows: []
+  arrow: {fileID: 0}
 --- !u!114 &2858326164217154311
 MonoBehaviour:
   m_ObjectHideFlags: 0
