@@ -9,8 +9,10 @@ public class SheepSpawning : MonoBehaviour
     [SerializeField] private float respawnThreshold = -6.0f;
     [SerializeField] private float distanceOffset = 0.4f;
     private PlayerMovement playerMovement;
+    private SheepMovement sheepMovement;
     public bool playerActive = true;
     private GameObject player;
+    private GameObject sheep;
 
     public GameObject[] spawnedSheep = new GameObject[3];
     private bool[] sheepSpawned = new bool[3];
@@ -28,7 +30,9 @@ public class SheepSpawning : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        sheep = GameObject.FindGameObjectWithTag("Sheep");
         playerMovement = player.GetComponent<PlayerMovement>();
+        sheepMovement = player.GetComponent<SheepMovement>();
     }
 
     void Update()
@@ -44,8 +48,6 @@ public class SheepSpawning : MonoBehaviour
         if (playerActive)
         {
             MoveArrowToSpot(playerMovement.transform.position);
-
-            
         }
         else
         {
@@ -214,7 +216,7 @@ public class SheepSpawning : MonoBehaviour
         }
     }
 
-    private void SwitchToPlayer(int old)
+    public void SwitchToPlayer(int old)
     {
         playerActive = true;
         Camera.main.GetComponent<CameraFollow>().SetTarget(playerMovement.transform);
@@ -223,7 +225,7 @@ public class SheepSpawning : MonoBehaviour
         playerMovement.enabled = true;
     }
 
-    private void SwitchBackToPlayerAfterDeath()
+    public void SwitchBackToPlayerAfterDeath()
     {
         playerActive = true;
         Camera.main.GetComponent<CameraFollow>().SetTarget(playerMovement.transform);
@@ -290,7 +292,7 @@ public class SheepSpawning : MonoBehaviour
         whistle.Play();
     }
 
-    void DespawnLogic(int index)
+    public void DespawnLogic(int index)
     {
         sheepSpawned[index] = false;
         Destroy(spawnedSheep[index]);

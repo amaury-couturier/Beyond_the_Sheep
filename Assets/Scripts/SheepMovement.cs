@@ -13,6 +13,11 @@ public class SheepMovement : MonoBehaviour
     private float currentVelocityX;
     private float inputHorizontal;
     public bool isRunning = false;
+    [SerializeField] private PhysicsMaterial2D frictionMaterial;
+    [SerializeField] private PhysicsMaterial2D nonFrictionMaterial;
+    [SerializeField] private float raycastLength = 0.2f;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask wallLayer;
 
     [Header("Sheep Fall")]
     [SerializeField] private float originalGravity;
@@ -27,7 +32,7 @@ public class SheepMovement : MonoBehaviour
 
     [Header("Checkpoints")]
     private Vector3 respawnPoint;
-    [SerializeField] private float respawnThreshold = -6.0f;
+    [SerializeField] public float respawnThreshold = -10.0f;
 
     [Header("Componenets")]
     [SerializeField] private Rigidbody2D rb;
@@ -35,6 +40,14 @@ public class SheepMovement : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private LayerMask whatIsSheep;
     public bool isFacingRight = true;
+
+    private SheepSpawning sheepSpawning;
+
+    void Start()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        sheepSpawning = player.GetComponent<SheepSpawning>();
+    }
 
     void Update()
     {
@@ -67,9 +80,18 @@ public class SheepMovement : MonoBehaviour
             }
         }
 
-        if (transform.position.y <= respawnThreshold)
+        if (transform.position.y <= respawnThreshold || Input.GetKeyDown(KeyCode.C))
         {
-            RespawnSheep(); 
+            sheepSpawning.SwitchBackToPlayerAfterDeath();
+            for (int i = 0; i < sheepSpawning.spawnedSheep.Length; i++)
+            {
+                if (sheepSpawning.spawnedSheep[i] && sheepSpawning.spawnedSheep[i] != null && sheepSpawning.spawnedSheep[i].GetComponent<SheepMovement>().enabled)
+                {
+                    sheepSpawning.spawnedSheep[i].GetComponent<SheepMovement>().enabled = false;
+                    sheepSpawning.DespawnLogic(i);
+                    break;
+                }
+            }
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -157,6 +179,26 @@ public class SheepMovement : MonoBehaviour
         {
             rb.gravityScale = originalGravity;
         }
+    }
+
+    private void UpdateFrictionMaterial()
+    {
+        bool isLeftRaycastHit = Physics2D.Raycast(transform.position, Vector2.left, raycastLength, groundLayer | wallLayer);
+        bool isRightRaycastHit = Physics2D.Raycast(transform.position, Vector2.right, raycastLength, groundLayer | wallLayer);
+
+        if (isLeftRaycastHit || isRightRaycastHit)
+        {
+            SetFrictionMaterial(nonFrictionMaterial);
+        }
+        else
+        {
+            SetFrictionMaterial(frictionMaterial);
+        }
+    }
+
+    private void SetFrictionMaterial(PhysicsMaterial2D newFrictionMaterial)
+    {
+        GetComponent<Collider2D>().sharedMaterial = newFrictionMaterial;
     }
 
     private void Flip()

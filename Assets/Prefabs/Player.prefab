@@ -4997,7 +4997,7 @@ Transform:
   m_GameObject: {fileID: 1742102688566867916}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.38, z: 0}
+  m_LocalPosition: {x: -0.512, y: -1.456, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5052,13 +5052,13 @@ MonoBehaviour:
   dashingCooldown: 1
   isDashing: 0
   redXOffset: 0.55
-  redYOffset: 0.18
+  redYOffset: 0.25
   redXSize: 0.1
-  redYSize: 0.05
+  redYSize: 0.1
   greenXOffset: 0.55
-  greenYOffset: 0
+  greenYOffset: -0.08
   greenXSize: 0.1
-  greenYSize: 0.05
+  greenYSize: 0.15
   isGrabbing: 0
   rb: {fileID: 2632010381562871568}
   groundCheck: {fileID: 3573471888857412153}
@@ -5075,6 +5075,7 @@ MonoBehaviour:
   tr: {fileID: 5662638796973848819}
   dust: {fileID: 1448658502813925542}
   isFacingRight: 1
+  backgroundMusic: {fileID: 0}
   respawnThreshold: -10
   checkPointEffect: {fileID: 5879872810797178345}
 --- !u!50 &2632010381562871568
@@ -5136,8 +5137,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.057438523, y: -0.06348151}
-  m_Size: {x: 0.8686883, y: 1.873037}
+  m_Offset: {x: 0.032667667, y: -0.06348151}
+  m_Size: {x: 0.8191466, y: 1.873037}
   m_Direction: 0
 --- !u!96 &5662638796973848819
 TrailRenderer:

@@ -65,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private ParticleSystem dust;
     public bool isFacingRight = true;
     private SheepSpawning sheepSpawning;
+    [SerializeField] private AudioSource backgroundMusic;
 
     [Header("Checkpoints")]
     private Vector3 respawnPoint;
@@ -137,6 +138,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+
+            if (backgroundMusic != null)
+            {
+                backgroundMusic.Stop();
+            }
         }
     }
 

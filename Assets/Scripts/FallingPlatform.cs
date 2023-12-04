@@ -21,6 +21,7 @@ public class FallingPlatform : MonoBehaviour
     {
         yield return new WaitForSeconds(fallDelay);
         rb.bodyType = RigidbodyType2D.Dynamic;
+        GetComponent<Collider2D>().isTrigger = true;
         Destroy(gameObject, destroyDelay);
     }
 }
