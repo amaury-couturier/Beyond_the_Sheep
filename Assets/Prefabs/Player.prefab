@@ -5031,15 +5031,6 @@ MonoBehaviour:
   jumpBufferTime: 0.2
   airResistance: 1.5
   isJumping: 0
-  frictionless: {fileID: 6200000, guid: 16b6af32a5d23cf40a04361b87b72428, type: 2}
-  friction: {fileID: 6200000, guid: d708a39408725c34cab09a1f0c939d06, type: 2}
-  raycastDistance: 1
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 128
   wallSlidingSpeed: 2
   wallJumpingTime: 0.2
   wallJumpingCounter: 0
@@ -5047,6 +5038,15 @@ MonoBehaviour:
   wallJumpingPower: {x: 10.5, y: 10.5}
   isWallSliding: 0
   isWallJumping: 0
+  frictionMaterial: {fileID: 6200000, guid: d708a39408725c34cab09a1f0c939d06, type: 2}
+  nonFrictionMaterial: {fileID: 6200000, guid: 16b6af32a5d23cf40a04361b87b72428, type: 2}
+  raycastLength: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
   dashingPower: 24
   dashingTime: 0.3
   dashingCooldown: 1
@@ -5113,7 +5113,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1742102688566867916}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d708a39408725c34cab09a1f0c939d06, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

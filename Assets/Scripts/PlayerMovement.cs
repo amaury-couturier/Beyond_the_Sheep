@@ -36,6 +36,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector2 wallJumpingPower = new Vector2(12f, 14f);
     public bool isWallSliding;
     public bool isWallJumping;
+    [SerializeField] private PhysicsMaterial2D frictionMaterial;
+    [SerializeField] private PhysicsMaterial2D nonFrictionMaterial;
+    [SerializeField] private float raycastLength = 0.2f;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask wallLayer;
 
     [Header("Player Dash")]
     [SerializeField] private float dashingPower = 24f;
@@ -114,6 +119,8 @@ public class PlayerMovement : MonoBehaviour
         WallSlide();
         
         WallJump();
+
+        UpdateFrictionMaterial();
 
         LedgeGrab();
     
@@ -239,6 +246,26 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.3f);
             coyoteTimeCounter = 0f;
         }
+    }
+
+    private void UpdateFrictionMaterial()
+    {
+        bool isLeftRaycastHit = Physics2D.Raycast(transform.position, Vector2.left, raycastLength, groundLayer | wallLayer);
+        bool isRightRaycastHit = Physics2D.Raycast(transform.position, Vector2.right, raycastLength, groundLayer | wallLayer);
+
+        if (isLeftRaycastHit || isRightRaycastHit)
+        {
+            SetFrictionMaterial(nonFrictionMaterial);
+        }
+        else
+        {
+            SetFrictionMaterial(frictionMaterial);
+        }
+    }
+
+    private void SetFrictionMaterial(PhysicsMaterial2D newFrictionMaterial)
+    {
+        GetComponent<Collider2D>().sharedMaterial = newFrictionMaterial;
     }
 
     private void WallSlide()
