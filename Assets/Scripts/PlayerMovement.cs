@@ -301,11 +301,11 @@ public class PlayerMovement : MonoBehaviour
 
         if ((hitRight.collider != null && Input.GetKeyDown(KeyCode.D)) || (hitLeft.collider != null && Input.GetKeyDown(KeyCode.A)))
         {
-            collider2D.sharedMaterial = frictionless;
+            GetComponent<Collider2D>().sharedMaterial = frictionless;
         }
         else 
         {
-            collider2D.sharedMaterial = friction;
+            GetComponent<Collider2D>().sharedMaterial = friction;
         }
     }
 
