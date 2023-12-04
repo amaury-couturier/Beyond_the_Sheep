@@ -26,11 +26,6 @@ public class PlayerMovement : MonoBehaviour
     private float jumpBufferCounter;
     [SerializeField] private float airResistance = 2.5f;
     public bool isJumping;
-    [SerializeField] private PhysicsMaterial2D frictionless;
-    [SerializeField] private PhysicsMaterial2D friction;
-    [SerializeField] private float raycastDistance = 0.2f;
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private LayerMask wallLayer;
 
     [Header("Wall Jumping")]
     [SerializeField] private float wallSlidingSpeed = 2f;
@@ -75,7 +70,6 @@ public class PlayerMovement : MonoBehaviour
     {
         respawnPoint = transform.position;
         sheepSpawning = GetComponent<SheepSpawning>();
-        Collider2D collider2D = GetComponent<Collider2D>();
     }
 
     void Update()
@@ -122,8 +116,6 @@ public class PlayerMovement : MonoBehaviour
         WallJump();
 
         LedgeGrab();
-
-        ChangeFriction();
     
         if(!isWallJumping)
         {
@@ -291,21 +283,6 @@ public class PlayerMovement : MonoBehaviour
             }
 
             Invoke(nameof(StopWallJumping), wallJumpingDuration);
-        }
-    }
-
-    private void ChangeFriction()
-    {
-        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left, raycastDistance, groundLayer | wallLayer);
-        RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right, raycastDistance, groundLayer | wallLayer);
-
-        if ((hitRight.collider != null && Input.GetKeyDown(KeyCode.D)) || (hitLeft.collider != null && Input.GetKeyDown(KeyCode.A)))
-        {
-            collider2D.sharedMaterial = frictionless;
-        }
-        else 
-        {
-            collider2D.sharedMaterial = friction;
         }
     }
 
