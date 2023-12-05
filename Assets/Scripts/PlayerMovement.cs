@@ -277,7 +277,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void WallSlide()
     {
-        if(IsWalled() && !IsGrounded() && inputHorizontal != 0f)
+        if(IsWalled() && !IsGrounded() && inputHorizontal != 0f && !isGrabbing)
         {
             isWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
@@ -290,7 +290,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void WallJump()
     {
-        if(isWallSliding)
+        if(isWallSliding && !isGrabbing)
         {
             isWallJumping = false;
             wallJumpingDirection = -transform.localScale.x;
@@ -305,7 +305,7 @@ public class PlayerMovement : MonoBehaviour
             hasFlipped = true;
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) && wallJumpingCounter > 0f && hasFlipped)
+        if(Input.GetKeyDown(KeyCode.Space) && wallJumpingCounter > 0f && hasFlipped && !isGrabbing)
         {
             isWallJumping = true;
             rb.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
@@ -350,13 +350,12 @@ public class PlayerMovement : MonoBehaviour
         greenBox = Physics2D.OverlapBox(new Vector2(transform.position.x + (greenXOffset * transform.localScale.x), transform.position.y  + greenYOffset), new Vector2(greenXSize, greenYSize), 0f, (whatIsWall | whatIsGround));
         redBox = Physics2D.OverlapBox(new Vector2(transform.position.x + (redXOffset * transform.localScale.x), transform.position.y  + redYOffset), new Vector2(redXSize, redYSize), 0f, (whatIsWall | whatIsGround));
         
-        if (greenBox && !redBox && !isGrabbing && isJumping)
+        if (greenBox && !redBox && !isGrabbing && !IsGrounded() && !isWallSliding && !isWallJumping)
         {
             isGrabbing = true;
         }
     }
 
-    // Use for when animations are set up
     public void ChangePos()
     {
         transform.position = new Vector2(transform.position.x + (0.5f * transform.localScale.x), transform.position.y + 0.7f);

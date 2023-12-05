@@ -10730,7 +10730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBounce: 10
-  sheepBounce: 100
+  sheepBounce: 250
 --- !u!61 &245362236
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11449,8 +11449,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 4
-  m_fontSizeBase: 4
+  m_fontSize: 2.75
+  m_fontSizeBase: 2.75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11485,7 +11485,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 6.4159946, w: 0}
+  m_margin: {x: 0, y: 0, z: 0.016633987, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -11552,8 +11552,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 103.38, y: 7.3}
-  m_SizeDelta: {x: 15.4442, y: 4.5337}
+  m_AnchoredPosition: {x: 97.9, y: 5.36}
+  m_SizeDelta: {x: 6.2958, y: 4.5337}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &730329198
 GameObject:
@@ -12020,7 +12020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81359e7a3eaaaa146960f2d139512948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBounce: 15
+  playerBounce: 18
   sheepBounce: 0
 --- !u!61 &785564704
 BoxCollider2D:
@@ -12157,7 +12157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81359e7a3eaaaa146960f2d139512948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBounce: 15
+  playerBounce: 18
   sheepBounce: 0
 --- !u!61 &814879561
 BoxCollider2D:
@@ -12365,7 +12365,7 @@ Transform:
   m_GameObject: {fileID: 837238039}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 112.53, y: -2.7, z: 0}
+  m_LocalPosition: {x: 116.64, y: -2.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22047,7 +22047,7 @@ Tilemap:
       - {fileID: -677447326, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: 1868605390, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1045824422, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.3681254
+      m_AnimationSpeed: 2.950971
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 88, y: -2, z: 0}
@@ -22072,7 +22072,7 @@ Tilemap:
       - {fileID: -677447326, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: 1868605390, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1045824422, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.6240377
+      m_AnimationSpeed: 2.104945
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 116, y: 0, z: 0}
@@ -22085,7 +22085,7 @@ Tilemap:
       - {fileID: -677447326, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: 1868605390, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1045824422, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.0900788
+      m_AnimationSpeed: 2.2035952
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 44, y: 1, z: 0}
@@ -22122,7 +22122,7 @@ Tilemap:
       - {fileID: -677447326, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: 1868605390, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1045824422, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.972288
+      m_AnimationSpeed: 2.3097646
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 30, y: 4, z: 0}
@@ -22171,7 +22171,7 @@ Tilemap:
       - {fileID: -677447326, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: 1868605390, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1045824422, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.8827033
+      m_AnimationSpeed: 2.979494
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 72, y: 7, z: 0}
@@ -22443,7 +22443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81359e7a3eaaaa146960f2d139512948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBounce: 15
+  playerBounce: 18
   sheepBounce: 0
 --- !u!61 &1376859237
 BoxCollider2D:
@@ -24505,7 +24505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81359e7a3eaaaa146960f2d139512948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBounce: 15
+  playerBounce: 8
   sheepBounce: 0
 --- !u!61 &1905764240
 BoxCollider2D:
@@ -24690,11 +24690,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 394751821408588884, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 55.78
+      value: -0.58
       objectReference: {fileID: 0}
     - target: {fileID: 394751821408588884, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.83
+      value: -1.35
       objectReference: {fileID: 0}
     - target: {fileID: 394751821408588884, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25017,7 +25017,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.044529, y: -3.0191293}
+  m_Offset: {x: -2.044529, y: -2.5262885}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -25028,7 +25028,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.994896, y: 4.0865164}
+  m_Size: {x: 2.994896, y: 5.072198}
   m_EdgeRadius: 0
 --- !u!1 &2042844031
 GameObject:
