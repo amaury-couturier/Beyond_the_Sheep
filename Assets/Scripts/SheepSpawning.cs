@@ -16,6 +16,7 @@ public class SheepSpawning : MonoBehaviour
 
     public GameObject[] spawnedSheep = new GameObject[3];
     private bool[] sheepSpawned = new bool[3];
+    private int currentIndex = 0;
     
     private Vector3 spawnPosition;
 
@@ -64,9 +65,27 @@ public class SheepSpawning : MonoBehaviour
 
     private void InputHandler()
     {
+        if (Input.GetKeyDown(KeyCode.Mouse0) && sheepSpawned.Length > 0)
+        {
+            if (!sheepSpawned[currentIndex])
+            {
+                SpawnLogic(currentIndex);
+                currentIndex = Mathf.Min(currentIndex + 1, 2);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse1) && sheepSpawned[currentIndex])
+        {
+            if (sheepSpawned[currentIndex])
+            {
+                DespawnLogic(currentIndex);
+                currentIndex = Mathf.Max(currentIndex - 1, 0);
+            }
+        }
+        
         if (!sheepSpawned[0] && Input.GetKeyDown(KeyCode.Alpha1) && playerMovement.IsGrounded())
         {
-            SpawnLogic(0, 0);
+            SpawnLogic(0);
         }
         else if (sheepSpawned[0] && (Input.GetKeyDown(KeyCode.Alpha1) && spawnedSheep[0] != null || (spawnedSheep[0] && spawnedSheep[0].transform.position.y < respawnThreshold)) && !spawnedSheep[0].GetComponent<SheepMovement>().enabled)
         {
@@ -75,7 +94,7 @@ public class SheepSpawning : MonoBehaviour
 
         if (!sheepSpawned[1] && Input.GetKeyDown(KeyCode.Alpha2) && playerMovement.IsGrounded())
         {
-            SpawnLogic(1, 1);
+            SpawnLogic(1);
         }
         else if (sheepSpawned[1] && (Input.GetKeyDown(KeyCode.Alpha2) && spawnedSheep[1] != null || (spawnedSheep[1] != null && spawnedSheep[1].transform.position.y < respawnThreshold)) && !spawnedSheep[1].GetComponent<SheepMovement>().enabled)
         {
@@ -84,7 +103,7 @@ public class SheepSpawning : MonoBehaviour
 
         if (!sheepSpawned[2] && Input.GetKeyDown(KeyCode.Alpha3) && playerMovement.IsGrounded())
         {
-            SpawnLogic(2, 2);
+            SpawnLogic(2);
         }
         else if (sheepSpawned[2] && (Input.GetKeyDown(KeyCode.Alpha3) && spawnedSheep[2] != null || (spawnedSheep[2] != null && spawnedSheep[2].transform.position.y < respawnThreshold)) && !spawnedSheep[2].GetComponent<SheepMovement>().enabled)
         {
@@ -262,7 +281,7 @@ public class SheepSpawning : MonoBehaviour
         spawnedSheep[first].GetComponent<SheepMovement>().enabled = true; 
     }
 
-    void SpawnLogic(int index, int prefabNum)
+    void SpawnLogic(int index)
     {
         RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left, raycastDistance, groundLayer | wallLayer);
         RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right, raycastDistance, groundLayer | wallLayer);
@@ -287,7 +306,7 @@ public class SheepSpawning : MonoBehaviour
         }
 
         sheepSpawned[index] = true;
-        spawnedSheep[index] = Instantiate(sheepPrefabs[prefabNum], spawnPosition, Quaternion.identity);
+        spawnedSheep[index] = Instantiate(sheepPrefabs[index], spawnPosition, Quaternion.identity);
         distanceBehindPlayer += distanceOffset;
         whistle.Play();
     }

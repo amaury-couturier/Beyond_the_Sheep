@@ -350,7 +350,7 @@ public class PlayerMovement : MonoBehaviour
         greenBox = Physics2D.OverlapBox(new Vector2(transform.position.x + (greenXOffset * transform.localScale.x), transform.position.y  + greenYOffset), new Vector2(greenXSize, greenYSize), 0f, (whatIsWall | whatIsGround));
         redBox = Physics2D.OverlapBox(new Vector2(transform.position.x + (redXOffset * transform.localScale.x), transform.position.y  + redYOffset), new Vector2(redXSize, redYSize), 0f, (whatIsWall | whatIsGround));
         
-        if (greenBox && !redBox && !isGrabbing && !IsGrounded() && !isWallSliding && !isWallJumping)
+        if (greenBox && !redBox && !isGrabbing && isJumping && !isWallSliding && !isWallJumping)
         {
             isGrabbing = true;
         }

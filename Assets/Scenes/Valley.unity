@@ -205,6 +205,182 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &292622623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 292622626}
+  - component: {fileID: 292622625}
+  - component: {fileID: 292622624}
+  m_Layer: 0
+  m_Name: Instructions Text 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &292622624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292622623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: '-Sheep cannot jump so you will have to find creative ways to stack them
+    in order to reach otherwise unreachable areas
+
+
+    -While stacked, the bottom
+    sheep will be able to slowly move all the stacked sheep'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 12df48a6b1f49eb4f86b0e0a8efa0d15, type: 2}
+  m_sharedMaterial: {fileID: -7121533766981066259, guid: 12df48a6b1f49eb4f86b0e0a8efa0d15, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 2.5
+  m_fontSizeBase: 2.5
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 0
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0.042261124, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  _SortingLayer: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 292622625}
+  m_maskType: 0
+--- !u!23 &292622625
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292622623}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -7121533766981066259, guid: 12df48a6b1f49eb4f86b0e0a8efa0d15, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!224 &292622626
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292622623}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 24.49, y: 4.76}
+  m_SizeDelta: {x: 5.076, y: 5.4373}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &329077991
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,7 +530,7 @@ GameObject:
   - component: {fileID: 362696243}
   - component: {fileID: 362696242}
   m_Layer: 0
-  m_Name: Instructions Text (1)
+  m_Name: Instructions Text 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -516,8 +692,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.56, y: 1.23}
-  m_SizeDelta: {x: 7.1706, y: 5.4373}
+  m_AnchoredPosition: {x: 9.25, y: 1.57}
+  m_SizeDelta: {x: 6.0483, y: 5.4373}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &366949241
 GameObject:
@@ -1639,7 +1815,7 @@ GameObject:
   - component: {fileID: 699029039}
   - component: {fileID: 699029038}
   m_Layer: 0
-  m_Name: Instructions Text (4)
+  m_Name: Instructions Text 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1810,7 +1986,7 @@ GameObject:
   - component: {fileID: 706414655}
   - component: {fileID: 706414654}
   m_Layer: 0
-  m_Name: Instructions Text (2)
+  m_Name: Instructions Text 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1836,16 +2012,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '"1, 2, and 3" - Spawn and despawn sheep
+  m_text: '"1, 2, and 3" (OR Left mouse click and right mouse click) - Spawn and
+    despawn sheep
 
 
-    -Sheep cannot jump so you
-    will have to find creative ways to stack them in order to reach otherwise unreachable
-    areas
-
-
-    -While stacked, the bottom sheep will be able to slowly move all
-    the stacked sheep'
+    Mouse Wheel (OR Q and E, recommended for laptop user) - Change
+    control from player to sheep'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 12df48a6b1f49eb4f86b0e0a8efa0d15, type: 2}
   m_sharedMaterial: {fileID: -7121533766981066259, guid: 12df48a6b1f49eb4f86b0e0a8efa0d15, type: 2}
@@ -1975,8 +2147,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18.74, y: 2.48}
-  m_SizeDelta: {x: 10.3625, y: 5.4373}
+  m_AnchoredPosition: {x: 17.62, y: 1.69}
+  m_SizeDelta: {x: 6.2374, y: 5.4373}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &747959058
 GameObject:
@@ -21302,7 +21474,7 @@ Tilemap:
       serializedVersion: 2
       m_AnimatedSprites:
       - {fileID: 1736461056, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 3.7581146
+      m_AnimationSpeed: 2.0891008
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -10, y: -2, z: 0}
@@ -21310,7 +21482,7 @@ Tilemap:
       serializedVersion: 2
       m_AnimatedSprites:
       - {fileID: 1736461056, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.9728982
+      m_AnimationSpeed: 2.1649382
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -9, y: -2, z: 0}
@@ -21318,7 +21490,7 @@ Tilemap:
       serializedVersion: 2
       m_AnimatedSprites:
       - {fileID: 1736461056, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 1.5471145
+      m_AnimationSpeed: 2.9384768
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -4, y: -2, z: 0}
@@ -21326,7 +21498,7 @@ Tilemap:
       serializedVersion: 2
       m_AnimatedSprites:
       - {fileID: 1736461056, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.0225134
+      m_AnimationSpeed: 3.4998472
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -3, y: -2, z: 0}
@@ -21334,7 +21506,7 @@ Tilemap:
       serializedVersion: 2
       m_AnimatedSprites:
       - {fileID: 1736461056, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.38633
+      m_AnimationSpeed: 1.2998527
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 1, y: -2, z: 0}
@@ -21345,7 +21517,7 @@ Tilemap:
       - {fileID: 12149348, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1866755510, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -379340222, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 3.2577968
+      m_AnimationSpeed: 1.1564407
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 33, y: -2, z: 0}
@@ -21359,7 +21531,7 @@ Tilemap:
       - {fileID: -760918455, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1529280534, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -489655966, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 3.290924
+      m_AnimationSpeed: 3.431778
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 82, y: -1, z: 0}
@@ -21373,7 +21545,7 @@ Tilemap:
       - {fileID: -760918455, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1529280534, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -489655966, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 3.1379879
+      m_AnimationSpeed: 3.7596753
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 47, y: 0, z: 0}
@@ -21384,7 +21556,7 @@ Tilemap:
       - {fileID: 12149348, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1866755510, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -379340222, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.7056215
+      m_AnimationSpeed: 3.1479452
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 63, y: 0, z: 0}
@@ -21398,7 +21570,7 @@ Tilemap:
       - {fileID: -760918455, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1529280534, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -489655966, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 1.8439147
+      m_AnimationSpeed: 1.2324041
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 64, y: 0, z: 0}
@@ -21409,7 +21581,7 @@ Tilemap:
       - {fileID: 12149348, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1866755510, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -379340222, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.157023
+      m_AnimationSpeed: 2.6210475
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 67, y: 1, z: 0}
@@ -21422,7 +21594,7 @@ Tilemap:
       - {fileID: -677447326, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: 1868605390, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1045824422, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.8459046
+      m_AnimationSpeed: 2.5354495
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 88, y: 1, z: 0}
@@ -21433,7 +21605,7 @@ Tilemap:
       - {fileID: 12149348, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1866755510, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -379340222, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.8069139
+      m_AnimationSpeed: 2.1855738
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 52, y: 3, z: 0}
@@ -21446,7 +21618,7 @@ Tilemap:
       - {fileID: -677447326, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: 1868605390, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1045824422, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.7724516
+      m_AnimationSpeed: 2.6205325
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 59, y: 3, z: 0}
@@ -21460,7 +21632,7 @@ Tilemap:
       - {fileID: -760918455, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1529280534, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -489655966, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 1.4205883
+      m_AnimationSpeed: 2.3739603
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 113, y: 3, z: 0}
@@ -21474,7 +21646,7 @@ Tilemap:
       - {fileID: -760918455, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1529280534, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -489655966, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.8690035
+      m_AnimationSpeed: 2.9305003
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 114, y: 3, z: 0}
@@ -21485,7 +21657,7 @@ Tilemap:
       - {fileID: 12149348, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1866755510, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -379340222, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 1.2498413
+      m_AnimationSpeed: 1.6167668
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 117, y: 3, z: 0}
@@ -21498,7 +21670,7 @@ Tilemap:
       - {fileID: -677447326, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: 1868605390, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1045824422, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.284453
+      m_AnimationSpeed: 2.2988546
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 92, y: 11, z: 0}
@@ -21511,7 +21683,7 @@ Tilemap:
       - {fileID: -677447326, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: 1868605390, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1045824422, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.4883332
+      m_AnimationSpeed: 2.4373422
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -22629,7 +22801,7 @@ GameObject:
   - component: {fileID: 1581667610}
   - component: {fileID: 1581667609}
   m_Layer: 0
-  m_Name: Instructions Text (3)
+  m_Name: Instructions Text 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23914,6 +24086,7 @@ SceneRoots:
   - {fileID: 441179337}
   - {fileID: 362696244}
   - {fileID: 706414656}
+  - {fileID: 292622626}
   - {fileID: 1581667611}
   - {fileID: 2003652350}
   - {fileID: 699029040}
