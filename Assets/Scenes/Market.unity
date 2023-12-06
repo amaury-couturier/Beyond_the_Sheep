@@ -22077,7 +22077,7 @@ Tilemap:
       - {fileID: -677447326, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: 1868605390, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1045824422, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.8714187
+      m_AnimationSpeed: 2.6252892
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 88, y: -2, z: 0}
@@ -22102,7 +22102,7 @@ Tilemap:
       - {fileID: -677447326, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: 1868605390, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1045824422, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.616076
+      m_AnimationSpeed: 2.194767
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 116, y: 0, z: 0}
@@ -22115,7 +22115,7 @@ Tilemap:
       - {fileID: -677447326, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: 1868605390, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1045824422, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.163147
+      m_AnimationSpeed: 2.9316366
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 44, y: 1, z: 0}
@@ -22152,7 +22152,7 @@ Tilemap:
       - {fileID: -677447326, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: 1868605390, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1045824422, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.6481493
+      m_AnimationSpeed: 2.2715242
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 30, y: 4, z: 0}
@@ -22201,7 +22201,7 @@ Tilemap:
       - {fileID: -677447326, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: 1868605390, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1045824422, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.6094332
+      m_AnimationSpeed: 2.7805774
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 72, y: 7, z: 0}
@@ -24720,11 +24720,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 394751821408588884, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 99.93
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 394751821408588884, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.87
+      value: -1.37
       objectReference: {fileID: 0}
     - target: {fileID: 394751821408588884, guid: c7b88a8297ffba749a78d35d8f573883, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25201,7 +25201,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.044529, y: -2.1619}
+  m_Offset: {x: -2.044529, y: -2.263929}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -25212,7 +25212,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.994896, y: 4.284239}
+  m_Size: {x: 2.994896, y: 4.4882965}
   m_EdgeRadius: 0
 --- !u!1 &2110423100
 GameObject:

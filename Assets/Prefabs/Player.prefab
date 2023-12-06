@@ -5076,7 +5076,7 @@ MonoBehaviour:
   dust: {fileID: 1448658502813925542}
   isFacingRight: 1
   backgroundMusic: {fileID: 0}
-  respawnThreshold: -10
+  respawnThreshold: -7
   checkPointEffect: {fileID: 5879872810797178345}
 --- !u!50 &2632010381562871568
 Rigidbody2D:

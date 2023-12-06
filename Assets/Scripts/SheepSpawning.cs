@@ -325,8 +325,8 @@ public class SheepSpawning : MonoBehaviour
          Gizmos.color = Color.red;
 
         // Simulate raycasts for Gizmos drawing
-        Vector3 simulatedLeftHitPoint = transform.position + Vector3.left * raycastDistance;
-        Vector3 simulatedRightHitPoint = transform.position + Vector3.right * raycastDistance;
+        Vector2 simulatedLeftHitPoint = transform.position + Vector3.left * raycastDistance;
+        Vector2 simulatedRightHitPoint = transform.position + Vector3.right * raycastDistance;
 
         Gizmos.DrawLine(transform.position, simulatedLeftHitPoint);
         Gizmos.DrawLine(transform.position, simulatedRightHitPoint);
