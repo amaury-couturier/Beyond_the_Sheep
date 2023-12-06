@@ -5049,7 +5049,7 @@ MonoBehaviour:
     m_Bits: 128
   dashingPower: 24
   dashingTime: 0.3
-  dashingCooldown: 1
+  dashingCooldown: 0.7
   isDashing: 0
   redXOffset: 0.55
   redYOffset: 0.25

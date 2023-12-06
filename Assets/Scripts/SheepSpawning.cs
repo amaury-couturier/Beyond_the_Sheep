@@ -16,7 +16,6 @@ public class SheepSpawning : MonoBehaviour
 
     public GameObject[] spawnedSheep = new GameObject[3];
     private bool[] sheepSpawned = new bool[3];
-    private int currentIndex = 0;
     
     private Vector3 spawnPosition;
 
@@ -64,25 +63,7 @@ public class SheepSpawning : MonoBehaviour
     }
 
     private void InputHandler()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && sheepSpawned.Length > 0)
-        {
-            if (!sheepSpawned[currentIndex])
-            {
-                SpawnLogic(currentIndex);
-                currentIndex = Mathf.Min(currentIndex + 1, 2);
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Mouse1) && sheepSpawned[currentIndex])
-        {
-            if (sheepSpawned[currentIndex])
-            {
-                DespawnLogic(currentIndex);
-                currentIndex = Mathf.Max(currentIndex - 1, 0);
-            }
-        }
-        
+    {   
         if (!sheepSpawned[0] && Input.GetKeyDown(KeyCode.Alpha1) && playerMovement.IsGrounded())
         {
             SpawnLogic(0);

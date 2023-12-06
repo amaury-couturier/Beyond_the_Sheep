@@ -378,7 +378,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 24.49, y: 4.76}
+  m_AnchoredPosition: {x: 24.49, y: 4.06}
   m_SizeDelta: {x: 5.076, y: 5.4373}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &329077991
@@ -2012,12 +2012,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '"1, 2, and 3" (OR Left mouse click and right mouse click) - Spawn and
-    despawn sheep
+  m_text: '"1, 2, and 3"  - Spawn and despawn sheep
 
 
-    Mouse Wheel (OR Q and E, recommended for laptop user) - Change
-    control from player to sheep'
+    Mouse Wheel (OR Q and E,
+    recommended for laptop user) - Change control from player to sheep'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 12df48a6b1f49eb4f86b0e0a8efa0d15, type: 2}
   m_sharedMaterial: {fileID: -7121533766981066259, guid: 12df48a6b1f49eb4f86b0e0a8efa0d15, type: 2}
@@ -21474,7 +21473,7 @@ Tilemap:
       serializedVersion: 2
       m_AnimatedSprites:
       - {fileID: 1736461056, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.0891008
+      m_AnimationSpeed: 3.0247939
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -10, y: -2, z: 0}
@@ -21482,7 +21481,7 @@ Tilemap:
       serializedVersion: 2
       m_AnimatedSprites:
       - {fileID: 1736461056, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.1649382
+      m_AnimationSpeed: 2.381448
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -9, y: -2, z: 0}
@@ -21490,7 +21489,7 @@ Tilemap:
       serializedVersion: 2
       m_AnimatedSprites:
       - {fileID: 1736461056, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.9384768
+      m_AnimationSpeed: 2.4110842
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -4, y: -2, z: 0}
@@ -21498,7 +21497,7 @@ Tilemap:
       serializedVersion: 2
       m_AnimatedSprites:
       - {fileID: 1736461056, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 3.4998472
+      m_AnimationSpeed: 2.5321798
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -3, y: -2, z: 0}
@@ -21506,7 +21505,7 @@ Tilemap:
       serializedVersion: 2
       m_AnimatedSprites:
       - {fileID: 1736461056, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 1.2998527
+      m_AnimationSpeed: 1.4660875
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 1, y: -2, z: 0}
@@ -21517,7 +21516,7 @@ Tilemap:
       - {fileID: 12149348, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1866755510, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -379340222, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 1.1564407
+      m_AnimationSpeed: 2.873864
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 33, y: -2, z: 0}
@@ -21531,7 +21530,7 @@ Tilemap:
       - {fileID: -760918455, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1529280534, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -489655966, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 3.431778
+      m_AnimationSpeed: 3.313953
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 82, y: -1, z: 0}
@@ -21545,7 +21544,7 @@ Tilemap:
       - {fileID: -760918455, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1529280534, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -489655966, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 3.7596753
+      m_AnimationSpeed: 1.8728786
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 47, y: 0, z: 0}
@@ -21556,7 +21555,7 @@ Tilemap:
       - {fileID: 12149348, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1866755510, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -379340222, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 3.1479452
+      m_AnimationSpeed: 3.5333257
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 63, y: 0, z: 0}
@@ -21570,7 +21569,7 @@ Tilemap:
       - {fileID: -760918455, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1529280534, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -489655966, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 1.2324041
+      m_AnimationSpeed: 3.9180653
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 64, y: 0, z: 0}
@@ -21581,7 +21580,7 @@ Tilemap:
       - {fileID: 12149348, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1866755510, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -379340222, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.6210475
+      m_AnimationSpeed: 2.9887457
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 67, y: 1, z: 0}
@@ -21594,7 +21593,7 @@ Tilemap:
       - {fileID: -677447326, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: 1868605390, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1045824422, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.5354495
+      m_AnimationSpeed: 2.7499053
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 88, y: 1, z: 0}
@@ -21605,7 +21604,7 @@ Tilemap:
       - {fileID: 12149348, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1866755510, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -379340222, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.1855738
+      m_AnimationSpeed: 3.2005835
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 52, y: 3, z: 0}
@@ -21618,7 +21617,7 @@ Tilemap:
       - {fileID: -677447326, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: 1868605390, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1045824422, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.6205325
+      m_AnimationSpeed: 2.4213128
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 59, y: 3, z: 0}
@@ -21632,7 +21631,7 @@ Tilemap:
       - {fileID: -760918455, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1529280534, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -489655966, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.3739603
+      m_AnimationSpeed: 3.6733232
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 113, y: 3, z: 0}
@@ -21646,7 +21645,7 @@ Tilemap:
       - {fileID: -760918455, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1529280534, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -489655966, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.9305003
+      m_AnimationSpeed: 1.3028708
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 114, y: 3, z: 0}
@@ -21657,7 +21656,7 @@ Tilemap:
       - {fileID: 12149348, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1866755510, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -379340222, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 1.6167668
+      m_AnimationSpeed: 3.943154
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 117, y: 3, z: 0}
@@ -21670,7 +21669,7 @@ Tilemap:
       - {fileID: -677447326, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: 1868605390, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1045824422, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.2988546
+      m_AnimationSpeed: 2.9185019
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 92, y: 11, z: 0}
@@ -21683,7 +21682,7 @@ Tilemap:
       - {fileID: -677447326, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: 1868605390, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
       - {fileID: -1045824422, guid: 978c2433794842840a3cee43fd6cab3c, type: 3}
-      m_AnimationSpeed: 2.4373422
+      m_AnimationSpeed: 2.680136
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -23694,15 +23693,12 @@ MonoBehaviour:
   m_text: 'Other sheep behaviors:
 
 
-    -Cannot go up slopes
+    -If the player is too close to a wall, the
+    sheep will spawn behind him
 
 
-    -If the player
-    is too close to a wall, the sheep will spawn behind him
-
-
-    -Sheep will spawn
-    at a slighlty further distance for every sheep that is currently spawned'
+    -Sheep will spawn at a slighlty further distance
+    for every sheep that is currently spawned'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 12df48a6b1f49eb4f86b0e0a8efa0d15, type: 2}
   m_sharedMaterial: {fileID: -7121533766981066259, guid: 12df48a6b1f49eb4f86b0e0a8efa0d15, type: 2}
